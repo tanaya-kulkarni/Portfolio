@@ -48,7 +48,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 #nav a{display:block;height:40px;line-height:40px;text-align:center;font-size:var(--nav-size);color:var(--nav-color);text-decoration:none;font-weight:400}
 #nav a:hover{color:var(--text)}
 /* nav underline */
-:root{ --ul-color:#4570E1; --ul-thickness:3px; --ul-gap:6px; --ul-ms:250ms; }
+:root{ --ul-color:#4570E1; --ul-thickness:3px; --ul-gap:4px; --ul-ms:250ms; }
 #nav a span{display:inline-block;position:relative;line-height:1.2}
 #nav a span::after{
   content:"";position:absolute;left:0;right:0;top:100%;
@@ -102,6 +102,39 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 .pola:hover .ov{opacity:var(--ov-opacity)}
 .pola:hover .cap{opacity:1}
 
+  /* ===== WORK SECTION ===== */
+:root{
+  --work-gap:18px;            /* 18px + ~102px of white under the hero tab ≈ 120px */
+  --w-tab-size:24px; --w-tab-inactive:.45; --w-sticky-top:140px;
+  --w-title-size:30px; --w-date-size:26px;
+  --w-card-h:390px; --w-card-r:12px; --w-border:#BDBDBD;
+  --w-row-gap:72px; --w-col-gap:58px; --w-dot:#A8DAFF;
+}
+.work{zoom:var(--k);width:1512px;margin-top:var(--work-gap);padding-bottom:160px}
+.w-title{margin:0 0 36px 360px;font-size:var(--heading-size);font-weight:400;line-height:56px;color:#000}
+.w-grid{display:grid;grid-template-columns:310px 1044px;margin-left:50px}
+
+/* sticky side nav */
+.w-side{position:sticky;top:var(--w-sticky-top);align-self:start;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.w-tab{background:none;border:0;padding:0;font:inherit;font-size:var(--w-tab-size);line-height:40px;color:#000;opacity:var(--w-tab-inactive);cursor:pointer;text-align:left;transition:opacity .25s}
+.w-tab.active{opacity:1}
+.w-tab:hover{opacity:.8}
+
+/* project rows: long, pair, long, pair... */
+.w-list{display:flex;flex-direction:column;gap:var(--w-row-gap)}
+.w-list.fade{animation:wfade .35s ease}
+@keyframes wfade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.w-row{display:grid;gap:var(--w-col-gap)}
+.w-row.long{grid-template-columns:1fr}
+.w-row.pair{grid-template-columns:1fr 1fr}
+.w-item{display:block;color:inherit;text-decoration:none}
+.w-card{position:relative;height:var(--w-card-h);border:1px solid var(--w-border);border-radius:var(--w-card-r);overflow:hidden;background:#fff}
+.w-card img{width:100%;height:100%;object-fit:cover;display:block}
+.w-ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#4a76e8;background:rgba(169,228,252,.2);font:12px/1.3 ui-monospace,Menlo,monospace}
+.w-meta{display:flex;align-items:flex-start;gap:12px;margin-top:16px}
+.w-meta .dot{flex:none;width:20px;height:20px;margin-top:10px;border-radius:50%;background:var(--w-dot)}
+.w-meta h3{flex:1;margin:0;font-size:var(--w-title-size);font-weight:500;line-height:40px;color:#000}
+.w-meta .date{flex:none;width:144px;margin-top:4px;text-align:right;font-size:var(--w-date-size);font-weight:400;line-height:40px;color:#545454}
 /* STUB SECTIONS (nav scroll targets) */
 .stub{min-height:100vh;display:grid;place-items:center;color:#999;font-size:22px;border-top:1px dashed #ccc}
 </style>
@@ -121,7 +154,16 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
   </div>
 </main>
 
-<section id="work" class="stub">WORK — add your section / page here</section>
+<section id="work" class="work">
+  <h2 class="w-title">Featured Projects</h2>
+  <div class="w-grid">
+    <aside class="w-side">
+      <button class="w-tab active" data-tab="dx">Digital Experiences</button>
+      <button class="w-tab" data-tab="rs">Research &amp; Systems</button>
+    </aside>
+    <div class="w-list" id="w-list"></div>
+  </div>
+</section>
 <section id="about" class="stub">ABOUT ME — add your section / page here</section>
 <section id="contact" class="stub">CONTACT — add your section / page here</section>
 <div id="ctl"></div>
@@ -165,6 +207,49 @@ const CONFIG = {
     {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/figmapic.jpeg?raw=true", caption:"Prototyping antics", cx:1191, cy:686, w:241, h:291, r:21}
   ]
 };
+/* ===== WORK SECTION DATA — add your links here ===== */
+const WORK = {
+  dx: [   // Digital Experiences (img = image link, link = project page, "" to skip)
+    {title:"Exploring trust in Digital Banking with HDFC", date:"/ May 2026", img:"", link:""},
+    {title:"Clique - Designing for Behavioral Influence",  date:"/ Sep 2026", img:"", link:""},
+    {title:"Moveit - UX Design for Relocation Journeys",   date:"/ Feb 2026", img:"", link:""},
+    {title:"Foodin - Service Design in Food Courts",       date:"/ Apr 2026", img:"", link:""}
+  ],
+  rs: [   // Research & Systems
+    {title:"Research project one",   date:"/ Month 2026", img:"", link:""},
+    {title:"Research project two",   date:"/ Month 2026", img:"", link:""},
+    {title:"Research project three", date:"/ Month 2026", img:"", link:""},
+    {title:"Research project four",  date:"/ Month 2026", img:"", link:""}
+  ]
+};
+
+function workItem(p){
+  const el = document.createElement(p.link ? 'a' : 'div');
+  el.className = 'w-item'; if(p.link) el.href = p.link;
+  const media = p.img ? `<img src="${p.img}" alt="${p.title}">` : `<span class="w-ph">Project image<br>add link in WORK</span>`;
+  el.innerHTML = `<div class="w-card">${media}</div><div class="w-meta"><span class="dot"></span><h3>${p.title}</h3><span class="date">${p.date}</span></div>`;
+  return el;
+}
+
+const wTabs = [...document.querySelectorAll('.w-tab')], wList = $('#w-list');
+function renderWork(key){
+  const items = WORK[key]; wList.innerHTML = '';
+  let i = 0, long = true;                          // pattern: long, pair, long, pair...
+  while(i < items.length){
+    const n = long ? 1 : 2, row = document.createElement('div');
+    row.className = 'w-row ' + (long ? 'long' : 'pair');
+    items.slice(i, i + n).forEach(p => row.append(workItem(p)));
+    wList.append(row); i += n; long = !long;
+  }
+  wTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === key));
+  wList.classList.remove('fade'); void wList.offsetWidth; wList.classList.add('fade');
+}
+wTabs.forEach(t => t.addEventListener('click', () => {
+  renderWork(t.dataset.tab);
+  const w = $('#work');
+  if(w.getBoundingClientRect().top < 0) w.scrollIntoView({behavior:'smooth'});   // jump back to the top of the list
+}));
+renderWork('dx');
 
 const $ = s => document.querySelector(s);
 const root = document.documentElement;
