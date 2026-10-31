@@ -68,7 +68,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 .panel .hi{margin:0;height:40px;line-height:40px;text-align:center;font-size:var(--body-size);color:var(--text)}
 .panel.b{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:0 25px;font-size:var(--intro-b-size);font-weight:400;line-height:1.1;gap:0}
 .panel.b p{margin:0}
-.panel.b p + p{margin-top:6px}
+.panel.b p + p{margin-top:10px}
 .note{position:absolute;left:73px;top:416px;width:140px;text-align:left;font-size:var(--caption-size);line-height:1.2;z-index:3}
 
 /* POLAROIDS */
@@ -144,11 +144,11 @@ const CONFIG = {
     {label:"Dashed arrow", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1f49efb89499a2a86b9621956232b6ea49312f43/arrow.svg", x:202, y:458, w:95, h:60}
   ],
   polaroids: [   // listed back-to-front (later = on top)
-    {src:"", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:541, w:353, h:330, r:-13},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/kgpic.jpeg?raw=true", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:541, w:353, h:330, r:-13},
     {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/repairpic.jpeg?raw=true", caption:"Wall full of our research activities", cx:366,  cy:718, w:263, h:318, r:-12},
     {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/khgpic.jpeg?raw=true", caption:"Caption 3", cx:698,  cy:480, w:263, h:250, r:-4},
     {src:"", caption:"Caption 4", cx:937,  cy:438, w:266, h:248, r:3},
-    {src:"", caption:"Caption 5", cx:580,  cy:628, w:248, h:289, r:0},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/lypic.jpeg?raw=true", caption:"Caption 5", cx:580,  cy:628, w:248, h:289, r:0},
     {src:"", caption:"Caption 6", cx:1181, cy:503, w:264, h:240, r:13},
     {src:"", caption:"Caption 7", cx:957,  cy:638, w:261, h:269, r:8},
     {src:"", caption:"Caption 8", cx:738,  cy:668, w:230, h:216, r:0},
@@ -185,7 +185,7 @@ function panelA(){
   return p;
 }
 const B = document.createElement('div'); B.className = 'panel b';
-B.innerHTML = `<p>Currently studying Digital Product Design @ BITS Design School.</p><p>Recently interned @Lemon Yellow</p>`;
+B.innerHTML = `<p>  Currently studying Digital Product   Design @ BITS Design School.</p><p>  Recently interned @Lemon Yellow</p>`;
 $('#track').append(panelA(), B, panelA());
 
 let step = 0;
