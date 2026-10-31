@@ -47,7 +47,17 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 #nav{width:1512px;height:100px;padding:30px 54px 0;display:flex;justify-content:space-between;transform:scale(var(--k));transform-origin:0 0}
 #nav a{display:block;height:40px;line-height:40px;text-align:center;font-size:var(--nav-size);color:var(--nav-color);text-decoration:none;font-weight:400}
 #nav a:hover{color:var(--text)}
-
+/* nav underline */
+:root{ --ul-color:#4570E1; --ul-thickness:3px; --ul-gap:6px; --ul-ms:250ms; }
+#nav a span{display:inline-block;position:relative;line-height:1.2}
+#nav a span::after{
+  content:"";position:absolute;left:0;right:0;top:100%;
+  margin-top:var(--ul-gap);height:var(--ul-thickness);
+  background:var(--ul-color);border-radius:2px;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform var(--ul-ms) ease;
+}
+#nav a.active span::after{transform:scaleX(1)}
 /* STAGE (Figma coordinates; stage is shifted up 100px because the nav lives above it) */
 .hero-wrap{position:relative;height:calc(882px*var(--k));overflow:hidden}
 .stage{position:absolute;left:0;top:0;width:1512px;height:982px;transform:scale(var(--k)) translateY(-100px);transform-origin:0 0}
@@ -140,7 +150,7 @@ const CONFIG = {
     {label:"Star", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/4704162186c2ccc0f80c943ec7edc3ce738eed1b/starr.svg", x:1390, y:451, w:62, h:58},
     {label:"Cookie", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/cookie.svg", x:1338, y:621, w:61, h:58},
     {label:"Bulb left", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/bulbl.svg", x:126, y:553, w:74, h:78},
-    {label:"Pencil left", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/pencill.svg", x:88, y:635, w:36, h:90},
+    {label:"Pencil left", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/pencill.svg", x:88, y:625, w:36, h:90},
     {label:"Dashed arrow", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1f49efb89499a2a86b9621956232b6ea49312f43/arrow.svg", x:202, y:458, w:95, h:60}
   ],
   polaroids: [   // listed back-to-front (later = on top)
@@ -165,8 +175,34 @@ const fit = () => root.style.setProperty('--k', innerWidth / 1512);
 addEventListener('resize', fit); fit();
 
 /* nav */
-CONFIG.nav.forEach(n => { const a = document.createElement('a'); a.href = n.href; a.textContent = n.label; a.style.width = n.w + 'px'; $('#nav').append(a); });
+CONFIG.nav.forEach(n => { const a = document.createElement('a'); a.href = n.href; a.innerHTML = `<span>${n.label}</span>`; a.style.width = n.w + 'px'; $('#nav').append(a); });
+/* active nav underline: follows scroll and clicks */
+const navLinks = [...document.querySelectorAll('#nav a')];
+const hashes = navLinks.map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
+const sections = hashes.map(h => document.querySelector(h)).filter(Boolean);
+let lock = false;
 
+const setActive = id => navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+
+function spy(){
+  if (lock || !sections.length) return;
+  const line = 100 * num('--k') + innerHeight * 0.4;     // trigger line below the nav
+  let cur = sections[0];
+  sections.forEach(s => { if (s.getBoundingClientRect().top <= line) cur = s; });
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = sections[sections.length - 1];
+  setActive(cur.id);
+}
+addEventListener('scroll', spy, {passive:true});
+addEventListener('resize', spy);
+
+navLinks.forEach(a => a.addEventListener('click', () => {
+  const h = a.getAttribute('href');
+  if (!h.startsWith('#')) return;                        // normal page links are skipped
+  setActive(h.slice(1));
+  lock = true;                                           // stops flicker during smooth scroll
+  setTimeout(() => { lock = false; spy(); }, 900);
+}));
+spy();                                                   // HOME is active on load
 /* slot helper (placeholder box, or image when src is set) */
 function slot(o){
   const d = document.createElement('div'); d.className = 'slot';
