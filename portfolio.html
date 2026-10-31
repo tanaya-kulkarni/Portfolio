@@ -66,7 +66,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 .track.no-anim{transition:none}
 .panel{position:relative;width:527px;height:166px}
 .panel .hi{margin:0;height:40px;line-height:40px;text-align:center;font-size:var(--body-size);color:var(--text)}
-.panel.b{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:0 25px 0 30px;font-size:var(--intro-b-size);font-weight:400;line-height:1.1;gap:0}
+.panel.b{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:0 25px 0 40px;font-size:var(--intro-b-size);font-weight:400;line-height:1.1;gap:0}
 .panel.b p{margin:0}
 .panel.b p + p{margin-top:14px}
 .note{position:absolute;left:73px;top:416px;width:140px;text-align:left;font-size:var(--caption-size);line-height:1.2;z-index:3}
@@ -181,7 +181,7 @@ CONFIG.illustrations.forEach(o => $('#illos').append(slot(o)));
 function panelA(){
   const p = document.createElement('div'); p.className = 'panel';
   p.innerHTML = `<p class="hi">Hi there, I’m</p>`;
-  p.append(slot({label:CONFIG.nameSvg.label, src:CONFIG.nameSvg.src, x:120, y:46, w:290, h:126}));
+  p.append(slot({label:CONFIG.nameSvg.label, src:CONFIG.nameSvg.src, x:120, y:46, w:296, h:132}));
   return p;
 }
 const B = document.createElement('div'); B.className = 'panel b';
