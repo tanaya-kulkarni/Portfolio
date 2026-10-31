@@ -189,13 +189,19 @@ $('#track').append(panelA(), B, panelA());
 let step = 0;
 const track = $('#track');
 const advance = () => { step++; track.style.setProperty('--i', step); };
-track.addEventListener('transitionend', e => {
-  if(e.propertyName !== 'transform' || step !== 2) return;
-  track.classList.add('no-anim'); step = 0; track.style.setProperty('--i', 0);
-  void track.offsetWidth; track.classList.remove('no-anim');
-});
-const loop = () => setTimeout(() => { advance(); loop(); }, num('--intro-interval'));
-setTimeout(() => { advance(); loop(); }, num('--intro-delay'));
+const advance = () => {
+  step++;
+  track.style.setProperty('--i', step);
+  if (step === 2) {
+    setTimeout(() => {
+      track.classList.add('no-anim');
+      step = 0;
+      track.style.setProperty('--i', 0);
+      void track.offsetWidth;
+      track.classList.remove('no-anim');
+    }, num('--slide-ms') + 50);
+  }
+};
 
 /* polaroids */
 CONFIG.polaroids.forEach((p, i) => {
