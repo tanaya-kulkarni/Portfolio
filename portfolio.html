@@ -166,9 +166,12 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 </section>
 <section id="about" class="stub">ABOUT ME — add your section / page here</section>
 <section id="contact" class="stub">CONTACT — add your section / page here</section>
-<div id="ctl"></div>
+</div>
 
 <script>
+const $ = s => document.querySelector(s);
+const root = document.documentElement;
+const num = v => parseFloat(getComputedStyle(root).getPropertyValue(v));
 /* =====================================================================
    CONFIG — paste your links here. Leave src:"" to show a placeholder box.
    x / y / w / h are in design px on the 1512px Figma canvas (y is the
@@ -250,10 +253,6 @@ wTabs.forEach(t => t.addEventListener('click', () => {
   if(w.getBoundingClientRect().top < 0) w.scrollIntoView({behavior:'smooth'});   // jump back to the top of the list
 }));
 renderWork('dx');
-
-const $ = s => document.querySelector(s);
-const root = document.documentElement;
-const num = v => parseFloat(getComputedStyle(root).getPropertyValue(v));
 
 /* fit 1512px canvas to viewport width */
 const fit = () => root.style.setProperty('--k', innerWidth / 1512);
