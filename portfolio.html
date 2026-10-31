@@ -30,6 +30,7 @@
   /* polaroid */
   --pad-t:10px; --pad-s:10px; --pad-b:48px; --img-r:12px; --frame-r:16px;
   --spread:1; --rot-mul:1;
+     --pola-scale:0.85;
   /* hover */
   --hover-scale:1.06; --hover-rot:0; --hover-ms:300ms; --gray:1; --ov-opacity:1; --ov-strength:.9; --ov-height:75%; --cap-bottom:34px;
   /* shadow */
@@ -65,15 +66,17 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 .track.no-anim{transition:none}
 .panel{position:relative;width:527px;height:166px}
 .panel .hi{margin:0;height:40px;line-height:40px;text-align:center;font-size:var(--body-size);color:var(--text)}
-.panel.b{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:0 25px;font-size:var(--intro-b-size);font-weight:400;line-height:0.7}
+.panel.b{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:0 25px;font-size:var(--intro-b-size);font-weight:400;line-height:0.1; gap:0}
+  .panel.b p{margin:0}
+.panel.b p + p{margin-top:-6px}
 .note{position:absolute;left:73px;top:416px;width:140px;text-align:left;font-size:var(--caption-size);line-height:1.2;z-index:3}
 
 /* POLAROIDS */
 #polas{position:absolute;inset:0}
 .pola{position:absolute;margin:0;cursor:pointer;z-index:10;
-  width:calc(var(--w)*1px);height:calc(var(--h)*1px);
-  left:calc((756 + (var(--cx) - 756)*var(--spread) - var(--w)/2)*1px);
-  top:calc((560 + (var(--cy) - 560)*var(--spread) - var(--h)/2)*1px);
+  width:calc(var(--w)*var(--pola-scale)*1px);height:calc(var(--h)*var(--pola-scale)*1px);
+  left:calc((756 + (var(--cx) - 756)*var(--spread) - var(--w)*var(--pola-scale)/2)*1px);
+  top:calc((560 + (var(--cy) - 560)*var(--spread) - var(--h)*var(--pola-scale)/2)*1px);
   padding:var(--pad-t) var(--pad-s) var(--pad-b);background:#fff;border-radius:var(--frame-r);
   transform:rotate(calc(var(--r)*var(--rot-mul)*1deg)) scale(1);
   transition:transform var(--hover-ms) cubic-bezier(.3,1.4,.5,1),box-shadow var(--hover-ms);
@@ -138,7 +141,7 @@ const CONFIG = {
     {label:"Cookie", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/cookie.svg", x:1338, y:621, w:61, h:58},
     {label:"Bulb left", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/bulbl.svg", x:126, y:553, w:74, h:78},
     {label:"Pencil left", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/pencill.svg", x:88, y:645, w:36, h:90},
-    {label:"Dashed arrow", src:"", x:202, y:458, w:95, h:60}
+    {label:"Dashed arrow", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1f49efb89499a2a86b9621956232b6ea49312f43/arrow.svg", x:202, y:458, w:95, h:60}
   ],
   polaroids: [   // listed back-to-front (later = on top)
     {src:"", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:541, w:353, h:330, r:-13},
