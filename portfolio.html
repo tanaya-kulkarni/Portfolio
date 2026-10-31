@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tanaya — Portfolio</title>
+<style>
+/* ===== FONT: Creato Display (files live in /fonts next to this HTML file) ===== */
+@font-face{font-family:"Creato Display";font-weight:100;font-style:normal;font-display:swap;src:url("fonts/CreatoDisplay-Thin.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:300;font-style:normal;font-display:swap;src:url("fonts/CreatoDisplay-Light.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:400;font-style:normal;font-display:swap;src:url("fonts/CreatoDisplay-Regular.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:500;font-style:normal;font-display:swap;src:url("fonts/CreatoDisplay-Medium.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:700;font-style:normal;font-display:swap;src:url("fonts/CreatoDisplay-Bold.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:800;font-style:normal;font-display:swap;src:url("fonts/CreatoDisplay-ExtraBold.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:300;font-style:italic;font-display:swap;src:url("fonts/CreatoDisplay-LightItalic.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:400;font-style:italic;font-display:swap;src:url("fonts/CreatoDisplay-RegularItalic.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:500;font-style:italic;font-display:swap;src:url("fonts/CreatoDisplay-MediumItalic.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:700;font-style:italic;font-display:swap;src:url("fonts/CreatoDisplay-BoldItalic.otf") format("opentype")}
+@font-face{font-family:"Creato Display";font-weight:800;font-style:italic;font-display:swap;src:url("fonts/CreatoDisplay-ExtraBoldItalic.otf") format("opentype")}
+
+/* ===== DESIGN TOKENS / CONTROLS (all sizes in design px on a 1512px-wide canvas) ===== */
+:root{
+  --k:1;                         /* auto: viewport width / 1512 */
+  /* typography */
+  --font:"Creato Display",sans-serif;
+  --heading-size:48px; --body-size:24px; --nav-size:28px; --intro-b-size:30px; --caption-size:20px; --cap-size:22px;
+  /* colors */
+  --bg:#FFFFFF; --hero-bg:rgba(169,228,252,.47); --tab-bg:#A8DAFF; --dash-color:#FFFFFF; --text:#000000; --nav-color:#545454;
+  --dash:8px; --gap:8px;
+  /* polaroid */
+  --pad-t:10px; --pad-s:10px; --pad-b:48px; --img-r:12px; --frame-r:16px;
+  --spread:1; --rot-mul:1;
+  /* hover */
+  --hover-scale:1.06; --hover-rot:0; --hover-ms:300ms; --gray:1; --ov-opacity:1; --ov-strength:.9; --ov-height:75%; --cap-bottom:34px;
+  /* shadow */
+  --shadow-blur:18; --shadow-opacity:.35; --shadow-shift:10; --shadow-y:6;
+  /* intro slide */
+  --intro-interval:8000; --intro-delay:1200; --slide-ms:900ms;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(100px*var(--k))}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;height:calc(100px*var(--k));background:var(--bg);overflow:hidden}
+#nav{width:1512px;height:100px;padding:30px 54px 0;display:flex;justify-content:space-between;transform:scale(var(--k));transform-origin:0 0}
+#nav a{display:block;height:40px;line-height:40px;text-align:center;font-size:var(--nav-size);color:var(--nav-color);text-decoration:none;font-weight:400}
+#nav a:hover{color:var(--text)}
+
+/* STAGE (Figma coordinates; stage is shifted up 100px because the nav lives above it) */
+.hero-wrap{position:relative;height:calc(882px*var(--k));overflow:hidden}
+.stage{position:absolute;left:0;top:0;width:1512px;height:982px;transform:scale(var(--k)) translateY(-100px);transform-origin:0 0}
+.hero{position:absolute;left:0;top:100px;width:1512px;height:780px;background:var(--hero-bg)}
+.tab{position:absolute;left:0;top:765px;width:1512px;height:115px;background:var(--tab-bg);z-index:60;box-shadow:0 -2px 6px rgba(0,0,0,.18)}
+.dash{position:absolute;left:21px;top:786px;width:1468px;height:2px;z-index:61;background:repeating-linear-gradient(90deg,var(--dash-color) 0 var(--dash),transparent var(--dash) calc(var(--dash) + var(--gap)))}
+
+/* SLOTS (placeholders for illustrations / SVGs) */
+.slot{position:absolute;z-index:2;display:grid;place-items:center;text-align:center;padding:4px;border:2px dashed #4a76e8;background:rgba(255,255,255,.45);color:#4a76e8;font:12px/1.2 ui-monospace,Menlo,monospace}
+.slot.filled{border:0;background:none;padding:0}
+.slot img{width:100%;height:100%;object-fit:contain;display:block}
+
+/* INTRO (slides up, loops) */
+.intro{position:absolute;left:498px;top:140px;width:527px;height:166px;overflow:hidden;z-index:5}
+.track{height:498px;transform:translateY(calc(var(--i,0)*-166px));transition:transform var(--slide-ms) cubic-bezier(.77,0,.18,1)}
+.track.no-anim{transition:none}
+.panel{position:relative;width:527px;height:166px}
+.panel .hi{margin:0;height:40px;line-height:40px;text-align:center;font-size:var(--body-size);color:var(--text)}
+.panel.b{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:var(--intro-b-size);font-weight:500;line-height:1.25}
+.panel.b p{margin:0}
+.note{position:absolute;left:73px;top:416px;width:140px;text-align:center;font-size:var(--caption-size);line-height:1.2;z-index:3}
+
+/* POLAROIDS */
+#polas{position:absolute;inset:0}
+.pola{position:absolute;margin:0;cursor:pointer;z-index:10;
+  width:calc(var(--w)*1px);height:calc(var(--h)*1px);
+  left:calc((756 + (var(--cx) - 756)*var(--spread) - var(--w)/2)*1px);
+  top:calc((560 + (var(--cy) - 560)*var(--spread) - var(--h)/2)*1px);
+  padding:var(--pad-t) var(--pad-s) var(--pad-b);background:#fff;border-radius:var(--frame-r);
+  transform:rotate(calc(var(--r)*var(--rot-mul)*1deg)) scale(1);
+  transition:transform var(--hover-ms) cubic-bezier(.3,1.4,.5,1),box-shadow var(--hover-ms);
+  box-shadow:calc(var(--sx)*var(--shadow-shift)*1px) calc((var(--shadow-y) + var(--sy)*var(--shadow-shift))*1px) calc(var(--shadow-blur)*1px) rgba(0,0,0,var(--shadow-opacity))}
+.pola:hover{z-index:50;transform:rotate(calc((var(--r)*var(--rot-mul) + var(--hover-rot))*1deg)) scale(var(--hover-scale));
+  box-shadow:calc(var(--sx)*var(--shadow-shift)*1.5px) calc((var(--shadow-y) + var(--sy)*var(--shadow-shift))*1.5px) calc(var(--shadow-blur)*1.6px) rgba(0,0,0,var(--shadow-opacity))}
+.img{position:relative;width:100%;height:100%;overflow:hidden;border-radius:var(--img-r);background:#ddd}
+.img img,.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(var(--gray));transition:filter var(--hover-ms)}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;background:hsl(var(--hue) 70% 72%);color:#333;font:14px/1.3 ui-monospace,Menlo,monospace}
+.pola:hover .img img,.pola:hover .ph{filter:grayscale(0)}
+.ov{position:absolute;inset:0;opacity:0;transition:opacity var(--hover-ms);background:linear-gradient(to top,rgba(255,255,255,var(--ov-strength)) 0%,rgba(255,255,255,0) var(--ov-height))}
+.cap{position:absolute;left:0;right:0;bottom:var(--cap-bottom);margin:0;padding:0 16px;text-align:center;color:#000;font-size:var(--cap-size);line-height:1.15;font-weight:500;opacity:0;transition:opacity var(--hover-ms)}
+.pola:hover .ov{opacity:var(--ov-opacity)}
+.pola:hover .cap{opacity:1}
+
+/* STUB SECTIONS (nav scroll targets) */
+.stub{min-height:100vh;display:grid;place-items:center;color:#999;font-size:24px;border-top:1px dashed #ccc}
+
+/* CONTROLS PANEL (press C) */
+#gear{position:fixed;right:14px;bottom:14px;z-index:300;border:0;border-radius:20px;padding:8px 14px;background:#222;color:#fff;font:13px var(--font);cursor:pointer}
+#ctl{position:fixed;right:14px;bottom:56px;z-index:300;width:270px;max-height:75vh;overflow:auto;background:#fff;border:1px solid #ccc;border-radius:12px;padding:10px 12px;font:12px var(--font);box-shadow:0 8px 30px rgba(0,0,0,.2);display:none}
+#ctl.open{display:block}
+#ctl h4{margin:10px 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#777}
+#ctl label{display:grid;grid-template-columns:1fr 70px 38px;gap:6px;align-items:center;margin:3px 0}
+#ctl output{text-align:right;color:#555}
+#ctl button{margin-top:10px;width:100%;padding:6px;border:1px solid #222;background:#fff;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header class="nav"><nav id="nav"></nav></header>
+
+<main id="home" class="hero-wrap">
+  <div class="stage">
+    <div class="hero"></div>
+    <div id="illos"></div>
+    <div class="note">snippets from<br>my design<br>journey so far</div>
+    <div class="intro"><div class="track" id="track"></div></div>
+    <div id="polas"></div>
+    <div class="tab"></div><div class="dash"></div>
+  </div>
+</main>
+
+<section id="work" class="stub">WORK — add your section / page here</section>
+<section id="about" class="stub">ABOUT ME — add your section / page here</section>
+<section id="contact" class="stub">CONTACT — add your section / page here</section>
+
+<button id="gear" aria-label="Toggle controls">⚙ Controls (C)</button>
+<div id="ctl"></div>
+
+<script>
+/* =====================================================================
+   CONFIG — paste your links here. Leave src:"" to show a placeholder box.
+   x / y / w / h are in design px on the 1512px Figma canvas (y is the
+   absolute Figma y). Polaroids use cx, cy = centre point, w, h = frame
+   size, r = rotation in degrees.
+   ===================================================================== */
+const CONFIG = {
+  nav: [  // change href to "#section" (scroll) or "page.html" (switch page)
+    {label:"HOME",     href:"#home",    w:140},
+    {label:"WORK",     href:"#work",    w:140},
+    {label:"ABOUT ME", href:"#about",   w:160},
+    {label:"CONTACT",  href:"#contact", w:160}
+  ],
+  nameSvg: {label:"Name SVG", src:""},            // "Tanaya" handwritten SVG (332×126)
+  illustrations: [
+    {label:"Disco ball", src:"", x:54,   y:100, w:214, h:206},
+    {label:"Cake slice L", src:"", x:417,  y:209, w:61, h:59},
+    {label:"Cake slice R", src:"", x:1430, y:221, w:46, h:45},
+    {label:"Bulb top-right", src:"", x:1122, y:150, w:66, h:73},
+    {label:"Pencil right", src:"", x:1192, y:314, w:60, h:69},
+    {label:"Star", src:"", x:1390, y:451, w:62, h:58},
+    {label:"Cookie", src:"", x:1338, y:621, w:61, h:58},
+    {label:"Bulb left", src:"", x:126, y:553, w:74, h:78},
+    {label:"Pencil left", src:"", x:88, y:645, w:36, h:90},
+    {label:"Dashed arrow", src:"", x:202, y:458, w:95, h:60}
+  ],
+  polaroids: [   // listed back-to-front (later = on top)
+    {src:"", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:541, w:353, h:330, r:-13},
+    {src:"", caption:"Caption 2", cx:366,  cy:718, w:263, h:318, r:-12},
+    {src:"", caption:"Caption 3", cx:698,  cy:480, w:263, h:250, r:-4},
+    {src:"", caption:"Caption 4", cx:937,  cy:438, w:266, h:248, r:3},
+    {src:"", caption:"Caption 5", cx:580,  cy:628, w:248, h:289, r:0},
+    {src:"", caption:"Caption 6", cx:1181, cy:503, w:264, h:240, r:13},
+    {src:"", caption:"Caption 7", cx:957,  cy:638, w:261, h:269, r:8},
+    {src:"", caption:"Caption 8", cx:738,  cy:668, w:230, h:216, r:0},
+    {src:"", caption:"Caption 9", cx:1198, cy:696, w:241, h:291, r:15}
+  ]
+};
+
+const $ = s => document.querySelector(s);
+const root = document.documentElement;
+const num = v => parseFloat(getComputedStyle(root).getPropertyValue(v));
+
+/* fit 1512px canvas to viewport width */
+const fit = () => root.style.setProperty('--k', innerWidth / 1512);
+addEventListener('resize', fit); fit();
+
+/* nav */
+CONFIG.nav.forEach(n => { const a = document.createElement('a'); a.href = n.href; a.textContent = n.label; a.style.width = n.w + 'px'; $('#nav').append(a); });
+
+/* slot helper (placeholder box, or image when src is set) */
+function slot(o){
+  const d = document.createElement('div'); d.className = 'slot';
+  d.style.cssText = `left:${o.x}px;top:${o.y}px;width:${o.w}px;height:${o.h}px`;
+  if(o.src){ const i = new Image(); i.src = o.src; i.alt = o.label; d.append(i); d.classList.add('filled'); }
+  else d.innerHTML = `${o.label}<br>${o.w}×${o.h}`;
+  return d;
+}
+CONFIG.illustrations.forEach(o => $('#illos').append(slot(o)));
+
+/* intro panels: A (greeting + name) → B (bio) → A clone (seamless loop) */
+function panelA(){
+  const p = document.createElement('div'); p.className = 'panel';
+  p.innerHTML = `<p class="hi">Hi there, I’m</p>`;
+  p.append(slot({label:CONFIG.nameSvg.label, src:CONFIG.nameSvg.src, x:91, y:40, w:332, h:126}));
+  return p;
+}
+const B = document.createElement('div'); B.className = 'panel b';
+B.innerHTML = `<p>Currently studying Digital Product Design @ BITS Design School.</p><p>Recently interned @Lemon Yellow</p>`;
+$('#track').append(panelA(), B, panelA());
+
+let step = 0;
+const track = $('#track');
+const advance = () => { step++; track.style.setProperty('--i', step); };
+track.addEventListener('transitionend', e => {
+  if(e.propertyName !== 'transform' || step !== 2) return;
+  track.classList.add('no-anim'); step = 0; track.style.setProperty('--i', 0);
+  void track.offsetWidth; track.classList.remove('no-anim');
+});
+const loop = () => setTimeout(() => { advance(); loop(); }, num('--intro-interval'));
+setTimeout(() => { advance(); loop(); }, num('--intro-delay'));
+
+/* polaroids */
+CONFIG.polaroids.forEach((p, i) => {
+  const f = document.createElement('figure'); f.className = 'pola';
+  f.style.cssText = `--cx:${p.cx};--cy:${p.cy};--w:${p.w};--h:${p.h};--r:${p.r};--sx:${((p.cx-756)/756).toFixed(2)};--sy:${((p.cy-560)/300).toFixed(2)};--hue:${190+i*18}`;
+  const media = p.src ? `<img src="${p.src}" alt="${p.caption}">` : `<span class="ph">IMAGE ${i+1}<br>add link in CONFIG</span>`;
+  f.innerHTML = `<div class="img">${media}<div class="ov"></div><p class="cap">${p.caption}</p></div>`;
+  $('#polas').append(f);
+});
+
+/* controls panel: [group, css var, label, min, max, step, unit] */
+const CTRL = [
+  ['Typography','--nav-size','Nav size',16,44,1,'px'],['Typography','--body-size','Body size',14,36,1,'px'],
+  ['Typography','--intro-b-size','Bio line size',18,48,1,'px'],['Typography','--caption-size','Side note size',12,32,1,'px'],
+  ['Typography','--cap-size','Hover caption size',12,32,1,'px'],
+  ['Layout','--spread','Cluster spread',.6,1.4,.01,''],['Layout','--rot-mul','Rotation multiplier',0,2,.05,''],
+  ['Polaroid','--pad-t','Padding top',0,30,1,'px'],['Polaroid','--pad-s','Padding sides',0,30,1,'px'],['Polaroid','--pad-b','Padding bottom',20,80,1,'px'],
+  ['Polaroid','--img-r','Image radius',0,30,1,'px'],['Polaroid','--frame-r','Frame radius',0,30,1,'px'],
+  ['Hover','--hover-scale','Pop scale',1,1.3,.01,''],['Hover','--hover-rot','Extra rotation (deg)',-15,15,.5,''],
+  ['Hover','--hover-ms','Transition',50,1000,10,'ms'],['Hover','--gray','Default grayscale',0,1,.05,''],
+  ['Hover','--ov-opacity','Gradient opacity on hover',0,1,.05,''],['Hover','--ov-strength','Gradient strength',0,1,.05,''],
+  ['Hover','--ov-height','Gradient height',20,100,1,'%'],['Hover','--cap-bottom','Caption offset',0,140,1,'px'],
+  ['Shadow','--shadow-blur','Blur',0,60,1,''],['Shadow','--shadow-opacity','Opacity',0,1,.05,''],
+  ['Shadow','--shadow-shift','Direction shift (by position)',0,40,1,''],['Shadow','--shadow-y','Y offset',-10,40,1,''],
+  ['Intro slide','--intro-interval','Interval (ms)',2000,15000,100,''],['Intro slide','--intro-delay','Start delay (ms)',0,5000,100,''],
+  ['Intro slide','--slide-ms','Slide duration',200,2000,50,'ms']
+];
+const ctl = $('#ctl'), changed = {}; let group = '';
+CTRL.forEach(([g, v, label, min, max, st, u]) => {
+  if(g !== group){ group = g; ctl.insertAdjacentHTML('beforeend', `<h4>${g}</h4>`); }
+  const val = num(v), l = document.createElement('label');
+  l.innerHTML = `<span>${label}</span><input type="range" min="${min}" max="${max}" step="${st}" value="${val}"><output>${val}</output>`;
+  const r = l.querySelector('input'), o = l.querySelector('output');
+  r.oninput = () => { root.style.setProperty(v, r.value + u); o.textContent = r.value; changed[v] = r.value + u; };
+  ctl.append(l);
+});
+const cp = document.createElement('button'); cp.textContent = 'Copy changed values as CSS';
+cp.onclick = () => navigator.clipboard.writeText(':root{' + Object.entries(changed).map(([k, v]) => `${k}:${v};`).join('') + '}');
+ctl.append(cp);
+const toggle = () => ctl.classList.toggle('open');
+$('#gear').onclick = toggle;
+addEventListener('keydown', e => { if(e.key.toLowerCase() === 'c' && !e.metaKey && !e.ctrlKey) toggle(); });
+</script>
+</body>
+</html>
