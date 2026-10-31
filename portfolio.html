@@ -92,15 +92,6 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 
 /* STUB SECTIONS (nav scroll targets) */
 .stub{min-height:100vh;display:grid;place-items:center;color:#999;font-size:24px;border-top:1px dashed #ccc}
-
-/* CONTROLS PANEL (press C) */
-#gear{position:fixed;right:14px;bottom:14px;z-index:300;border:0;border-radius:20px;padding:8px 14px;background:#222;color:#fff;font:13px var(--font);cursor:pointer}
-#ctl{position:fixed;right:14px;bottom:56px;z-index:300;width:270px;max-height:75vh;overflow:auto;background:#fff;border:1px solid #ccc;border-radius:12px;padding:10px 12px;font:12px var(--font);box-shadow:0 8px 30px rgba(0,0,0,.2);display:none}
-#ctl.open{display:block}
-#ctl h4{margin:10px 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#777}
-#ctl label{display:grid;grid-template-columns:1fr 70px 38px;gap:6px;align-items:center;margin:3px 0}
-#ctl output{text-align:right;color:#555}
-#ctl button{margin-top:10px;width:100%;padding:6px;border:1px solid #222;background:#fff;border-radius:8px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -121,8 +112,6 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 <section id="work" class="stub">WORK — add your section / page here</section>
 <section id="about" class="stub">ABOUT ME — add your section / page here</section>
 <section id="contact" class="stub">CONTACT — add your section / page here</section>
-
-<button id="gear" aria-label="Toggle controls">⚙ Controls (C)</button>
 <div id="ctl"></div>
 
 <script>
@@ -217,38 +206,6 @@ CONFIG.polaroids.forEach((p, i) => {
   $('#polas').append(f);
 });
 
-/* controls panel: [group, css var, label, min, max, step, unit] */
-const CTRL = [
-  ['Typography','--nav-size','Nav size',16,44,1,'px'],['Typography','--body-size','Body size',14,36,1,'px'],
-  ['Typography','--intro-b-size','Bio line size',18,48,1,'px'],['Typography','--caption-size','Side note size',12,32,1,'px'],
-  ['Typography','--cap-size','Hover caption size',12,32,1,'px'],
-  ['Layout','--spread','Cluster spread',.6,1.4,.01,''],['Layout','--rot-mul','Rotation multiplier',0,2,.05,''],
-  ['Polaroid','--pad-t','Padding top',0,30,1,'px'],['Polaroid','--pad-s','Padding sides',0,30,1,'px'],['Polaroid','--pad-b','Padding bottom',20,80,1,'px'],
-  ['Polaroid','--img-r','Image radius',0,30,1,'px'],['Polaroid','--frame-r','Frame radius',0,30,1,'px'],
-  ['Hover','--hover-scale','Pop scale',1,1.3,.01,''],['Hover','--hover-rot','Extra rotation (deg)',-15,15,.5,''],
-  ['Hover','--hover-ms','Transition',50,1000,10,'ms'],['Hover','--gray','Default grayscale',0,1,.05,''],
-  ['Hover','--ov-opacity','Gradient opacity on hover',0,1,.05,''],['Hover','--ov-strength','Gradient strength',0,1,.05,''],
-  ['Hover','--ov-height','Gradient height',20,100,1,'%'],['Hover','--cap-bottom','Caption offset',0,140,1,'px'],
-  ['Shadow','--shadow-blur','Blur',0,60,1,''],['Shadow','--shadow-opacity','Opacity',0,1,.05,''],
-  ['Shadow','--shadow-shift','Direction shift (by position)',0,40,1,''],['Shadow','--shadow-y','Y offset',-10,40,1,''],
-  ['Intro slide','--intro-interval','Interval (ms)',2000,15000,100,''],['Intro slide','--intro-delay','Start delay (ms)',0,5000,100,''],
-  ['Intro slide','--slide-ms','Slide duration',200,2000,50,'ms']
-];
-const ctl = $('#ctl'), changed = {}; let group = '';
-CTRL.forEach(([g, v, label, min, max, st, u]) => {
-  if(g !== group){ group = g; ctl.insertAdjacentHTML('beforeend', `<h4>${g}</h4>`); }
-  const val = num(v), l = document.createElement('label');
-  l.innerHTML = `<span>${label}</span><input type="range" min="${min}" max="${max}" step="${st}" value="${val}"><output>${val}</output>`;
-  const r = l.querySelector('input'), o = l.querySelector('output');
-  r.oninput = () => { root.style.setProperty(v, r.value + u); o.textContent = r.value; changed[v] = r.value + u; };
-  ctl.append(l);
-});
-const cp = document.createElement('button'); cp.textContent = 'Copy changed values as CSS';
-cp.onclick = () => navigator.clipboard.writeText(':root{' + Object.entries(changed).map(([k, v]) => `${k}:${v};`).join('') + '}');
-ctl.append(cp);
-const toggle = () => ctl.classList.toggle('open');
-$('#gear').onclick = toggle;
-addEventListener('keydown', e => { if(e.key.toLowerCase() === 'c' && !e.metaKey && !e.ctrlKey) toggle(); });
 </script>
 </body>
 </html>
