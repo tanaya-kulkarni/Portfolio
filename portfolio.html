@@ -144,6 +144,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 .w-meta .date{flex:none;width:144px;margin-top:4px;text-align:right;font-size:var(--w-date-size);font-weight:400;line-height:40px;color:#545454}
 /* STUB SECTIONS (nav scroll targets) */
 .stub{min-height:100vh;display:grid;place-items:center;color:#999;font-size:22px;border-top:1px dashed #ccc}
+.mb{display:none}
 
   /* ===== MOBILE (class added by JS below 768px) — design canvas 402px wide ===== */
 html.mobile{
@@ -173,8 +174,10 @@ html.mobile{
 .mobile .track{height:390px;transform:translateY(calc(var(--i,0)*-130px))}
 .mobile .panel{width:394px;height:130px}
 .mobile .panel .hi{height:20px;line-height:20px}
-.mobile .panel.b{padding:0 24px 0 46px}
+.mobile .mb{display:inline}
+.mobile .panel.b{padding:0 0 0 70px}
 .mobile .panel.b p + p{margin-top:6px}
+
 /* slots + polaroids use the mobile coordinates */
 .mobile .slot{left:calc(var(--mx)*1px);top:calc(var(--my)*1px);width:calc(var(--mw)*1px);height:calc(var(--mh)*1px)}
 .mobile .slot.no-m{display:none}
@@ -370,7 +373,7 @@ function panelA(){
   return p;
 }
 const B = document.createElement('div'); B.className = 'panel b';
-B.innerHTML = `<p>    Currently studying Digital Product     Design @BITS Design School.</p><p>    Recently interned @Lemon Yellow</p>`;
+B.innerHTML = `<p>Currently studying<br class="mb"> Digital Product Design<br class="mb"> @BITS Design School.</p><p>Recently interned<br class="mb"> @Lemon Yellow</p>`;
 $('#track').append(panelA(), B, panelA());
 
 let step = 0;
