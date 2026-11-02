@@ -426,6 +426,34 @@ function keepInside(){
 keepInside();
 addEventListener('resize', keepInside);
 mq.addEventListener('change', keepInside);
+/* DRAG HELPER — open the page with ?drag in mobile view, drag things, copy the numbers */
+if (location.search.includes('drag')) {
+  const box = document.createElement('pre');
+  box.style.cssText = 'position:fixed;left:6px;right:6px;bottom:6px;z-index:999;max-height:35vh;overflow:auto;margin:0;padding:8px;background:#fff;border:1px solid #000;font:11px/1.4 monospace;white-space:pre-wrap';
+  document.body.append(box);
+  const n = (el, p) => parseFloat(el.style.getPropertyValue(p)) || 0;
+  const report = () => {
+    const pol = [...document.querySelectorAll('.pola')].map((f, i) =>
+      `#${i+1} m:{cx:${Math.round(n(f,'--mcx') + n(f,'--nx'))},cy:${Math.round(n(f,'--mcy'))},w:${n(f,'--mw')},h:${n(f,'--mh')},r:${n(f,'--mr')}}`);
+    const ill = [...document.querySelectorAll('#illos .slot:not(.no-m)')].map(s =>
+      `${s.querySelector('img')?.alt || s.textContent.split('×')[0]}: x:${Math.round(n(s,'--mx'))},y:${Math.round(n(s,'--my'))}`);
+    box.textContent = pol.join('\n') + '\n\n' + ill.join('\n');
+  };
+  document.querySelectorAll('.pola, #illos .slot:not(.no-m)').forEach(el => {
+    const pola = el.classList.contains('pola'), kx = pola ? '--mcx' : '--mx', ky = pola ? '--mcy' : '--my';
+    el.style.touchAction = 'none';
+    el.addEventListener('pointerdown', e => {
+      e.preventDefault(); e.stopPropagation(); el.setPointerCapture(e.pointerId);
+      const k = num('--k'), x0 = e.clientX, y0 = e.clientY;
+      const sx = n(el, kx) + (pola ? n(el, '--nx') : 0), sy = n(el, ky);
+      el.style.removeProperty('--nx');
+      const move = ev => { el.style.setProperty(kx, sx + (ev.clientX - x0) / k); el.style.setProperty(ky, sy + (ev.clientY - y0) / k); report(); };
+      el.addEventListener('pointermove', move);
+      el.addEventListener('pointerup', () => el.removeEventListener('pointermove', move), {once:true});
+    });
+  });
+  report();
+}
 </script>
 </body>
 </html>
