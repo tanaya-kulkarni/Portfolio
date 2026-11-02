@@ -91,16 +91,16 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
   transform:rotate(calc(var(--r)*var(--rot-mul)*1deg)) scale(1);
   transition:transform var(--hover-ms) cubic-bezier(.3,1.4,.5,1),box-shadow var(--hover-ms);
   box-shadow:calc(var(--sx)*var(--shadow-shift)*1px) calc((var(--shadow-y) + var(--sy)*var(--shadow-shift))*1px) calc(var(--shadow-blur)*1px) rgba(0,0,0,var(--shadow-opacity))}
-.pola:hover{z-index:50;transform:rotate(calc((var(--r)*var(--rot-mul) + var(--hover-rot))*1deg)) scale(var(--hover-scale));
+.pola:active{z-index:50;transform:rotate(calc((var(--r)*var(--rot-mul) + var(--hover-rot))*1deg)) scale(var(--hover-scale));
   box-shadow:calc(var(--sx)*var(--shadow-shift)*1.5px) calc((var(--shadow-y) + var(--sy)*var(--shadow-shift))*1.5px) calc(var(--shadow-blur)*1.6px) rgba(0,0,0,var(--shadow-opacity))}
 .img{position:relative;width:100%;height:100%;overflow:hidden;border-radius:var(--img-r);background:#ddd}
 .img img,.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(var(--gray));transition:filter var(--hover-ms)}
 .ph{display:flex;align-items:center;justify-content:center;text-align:center;background:hsl(var(--hue) 70% 72%);color:#333;font:14px/1.3 ui-monospace,Menlo,monospace}
-.pola:hover .img img,.pola:hover .ph{filter:grayscale(0)}
+.pola:active .img img,.pola:active .ph{filter:grayscale(0)}
 .ov{position:absolute;inset:0;opacity:0;transition:opacity var(--hover-ms);background:linear-gradient(to top,rgba(255,255,255,var(--ov-strength)) 0%,rgba(255,255,255,0) var(--ov-height))}
 .cap{position:absolute;left:0;right:0;bottom:var(--cap-bottom);margin:0;padding:0 16px;text-align:left;color:#000;font-size:var(--cap-size);line-height:1.15;font-weight:500;opacity:0;transition:opacity var(--hover-ms)}
-.pola:hover .ov{opacity:var(--ov-opacity)}
-.pola:hover .cap{opacity:1}
+.pola:active .ov{opacity:var(--ov-opacity)}
+.pola:active .cap{opacity:1}
 
   /* ===== WORK SECTION ===== */
 :root{
@@ -137,6 +137,55 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 .w-meta .date{flex:none;width:144px;margin-top:4px;text-align:right;font-size:var(--w-date-size);font-weight:400;line-height:40px;color:#545454}
 /* STUB SECTIONS (nav scroll targets) */
 .stub{min-height:100vh;display:grid;place-items:center;color:#999;font-size:22px;border-top:1px dashed #ccc}
+
+  /* ===== MOBILE (class added by JS below 768px) — design canvas 402px wide ===== */
+html.mobile{
+  scroll-padding-top:calc(70px*var(--k));
+  --nav-size:16px; --body-size:18px; --intro-b-size:18px; --caption-size:14px; --heading-size:28px; --cap-size:11px;
+  --pad-t:5px; --pad-s:5px; --pad-b:24px; --img-r:6px; --frame-r:8px;
+  --spread:1; --pola-scale:1; --cap-bottom:8px;
+  --shadow-blur:8; --shadow-shift:5; --shadow-y:3;
+  --ul-thickness:2px; --ul-gap:3px;
+  --work-gap:54px; --w-sticky-top:70px; --w-tab-size:16px; --w-title-size:18px; --w-date-size:16px;
+  --w-card-h:141px; --w-card-r:8px; --w-row-gap:32px; --w-col-gap:32px;
+}
+/* nav */
+.mobile .nav{height:calc(70px*var(--k))}
+.mobile #nav{width:402px;height:70px;padding:30px 28px 0}
+.mobile #nav a{height:23px;line-height:23px;width:calc(var(--nmw)*1px)}
+.mobile #nav .d{display:none}
+.mobile #nav .m{display:inline}
+/* hero */
+.mobile .hero-wrap{height:calc(670px*var(--k))}
+.mobile .stage{width:402px;height:740px;transform:scale(var(--k)) translateY(-70px)}
+.mobile .hero{top:70px;width:402px;height:670px}
+.mobile .tab{top:656px;width:402px;height:84px}
+.mobile .dash{left:11px;top:673px;width:380px}
+.mobile .note{left:84px;top:317px;width:97px;text-align:center}
+.mobile .intro{left:4px;top:190px;width:394px;height:130px}
+.mobile .track{height:390px;transform:translateY(calc(var(--i,0)*-130px))}
+.mobile .panel{width:394px;height:130px}
+.mobile .panel .hi{height:20px;line-height:20px}
+.mobile .panel.b{padding:0 11px}
+.mobile .panel.b p + p{margin-top:6px}
+/* slots + polaroids use the mobile coordinates */
+.mobile .slot{left:calc(var(--mx)*1px);top:calc(var(--my)*1px);width:calc(var(--mw)*1px);height:calc(var(--mh)*1px)}
+.mobile .slot.no-m{display:none}
+.mobile .pola{--cx:var(--mcx);--cy:var(--mcy);--w:var(--mw);--h:var(--mh);--r:var(--mr);--sx:var(--msx);--sy:var(--msy)}
+.mobile .cap{padding:0 8px}
+/* work */
+.mobile .work{width:402px}
+.mobile .w-title{margin:0 0 10px 40px;line-height:32px}
+.mobile .w-grid{display:block;margin-left:0}
+.mobile .w-side{flex-direction:row;justify-content:center;align-items:center;gap:0;background:#fff;padding:12px 0;z-index:20}
+.mobile .w-tab{line-height:24px}
+.mobile .w-div{display:block}
+.mobile .w-list{padding:22px 40px 0}
+.mobile .w-row.pair{grid-template-columns:1fr}
+.mobile .w-meta{gap:8px;margin-top:8px}
+.mobile .w-meta .dot{width:10px;height:10px;margin-top:5px}
+.mobile .w-meta h3{line-height:20px}
+.mobile .w-meta .date{width:89px;margin-top:2px;line-height:20px}
 </style>
 </head>
 <body>
@@ -159,6 +208,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
   <div class="w-grid">
     <aside class="w-side">
       <button class="w-tab active" data-tab="dx">Digital Experiences</button>
+      <span class="w-div"></span>
       <button class="w-tab" data-tab="rs">Research &amp; Systems</button>
     </aside>
     <div class="w-list" id="w-list"></div>
@@ -180,14 +230,14 @@ const num = v => parseFloat(getComputedStyle(root).getPropertyValue(v));
    ===================================================================== */
 const CONFIG = {
   nav: [  // change href to "#section" (scroll) or "page.html" (switch page)
-    {label:"HOME",     href:"#home",    w:140},
-    {label:"WORK",     href:"#work",    w:140},
-    {label:"ABOUT ME", href:"#about",   w:160},
-    {label:"CONTACT",  href:"#contact", w:160}
+    {label:"HOME",     href:"#home",    w:140, mw:49},
+{label:"WORK",     href:"#work",    w:140, mw:48},
+{label:"ABOUT ME", href:"#about",   w:160, mw:56, short:"ABOUT"},
+{label:"CONTACT",  href:"#contact", w:160, mw:73}
   ],
   nameSvg: {label:"Name SVG", src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/name.png?raw=true"},            // "Tanaya" handwritten SVG (332×126)
   illustrations: [
-    {label:"Disco ball", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1886f551abc1f4464a0ecef673433fb0f75e336f/discoball.svg", x:54,   y:100, w:214, h:206},
+    {label:"Disco ball", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1886f551abc1f4464a0ecef673433fb0f75e336f/discoball.svg", x:54,   y:100, w:214, h:206, m:{x:15,y:70,w:115,h:111}},
     {label:"Cake slice L", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/32fc055d298a2c7e83f77b98fc0872321e7b3da6/cake.svg", x:417,  y:209, w:61, h:59},
     {label:"Cake slice R", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/4704162186c2ccc0f80c943ec7edc3ce738eed1b/caker.svg", x:1430, y:221, w:46, h:45},
     {label:"Bulb top-right", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/409da6a9e9717ad6894164a615d79d3249857810/bulb.svg", x:1122, y:150, w:66, h:73},
@@ -199,15 +249,15 @@ const CONFIG = {
     {label:"Dashed arrow", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1f49efb89499a2a86b9621956232b6ea49312f43/arrow.svg", x:202, y:458, w:95, h:60}
   ],
   polaroids: [   // listed back-to-front (later = on top)
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/kgpic.jpeg?raw=true", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:499, w:353, h:330, r:-13},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/repairpic.jpeg?raw=true", caption:"Wall full of our research activities", cx:366,  cy:668, w:263, h:318, r:-12},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/khgpic.jpeg?raw=true", caption:"Conducting interviews for Khaki Heritage Foundation", cx:698,  cy:480, w:263, h:250, r:-4},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/dfipic.jpg?raw=true", caption:"Presenting Clique in a jury", cx:937,  cy:438, w:266, h:248, r:3},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/lypic.jpeg?raw=true", caption:"Conducting a workshop while interning @LY", cx:580,  cy:638, w:248, h:289, r:-7},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/roompic.jpeg?raw=true", caption:"Late night group projects;)", cx:1187, cy:496, w:264, h:240, r:13},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/hdpic.jpg?raw=true", caption:"With our project mentor from HDFC", cx:957,  cy:648, w:261, h:269, r:8},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/sdipic.png?raw=true", caption:"Experience staging", cx:738,  cy:673, w:230, h:216, r:0},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/figmapic.jpeg?raw=true", caption:"Prototyping antics", cx:1191, cy:686, w:241, h:291, r:21}
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/kgpic.jpeg?raw=true", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:499, w:353, h:330, r:-13, m:{cx:102,cy:526,w:175,h:163,r:-13}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/repairpic.jpeg?raw=true", caption:"Wall full of our research activities", cx:366,  cy:668, w:263, h:318, r:-12, m:{cx:74,cy:624,w:118,h:152,r:-12}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/khgpic.jpeg?raw=true", caption:"Conducting interviews for Khaki Heritage Foundation", cx:698,  cy:480, w:263, h:250, r:-4, m:{cx:217,cy:456,w:125,h:118,r:-4}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/dfipic.jpg?raw=true", caption:"Presenting Clique in a jury", cx:937,  cy:438, w:266, h:248, r:3, m:{cx:359,cy:490,w:159,h:154,r:3}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/lypic.jpeg?raw=true", caption:"Conducting a workshop while interning @LY", cx:580,  cy:638, w:248, h:289, r:-7, m:{cx:151,cy:583,w:142,h:160,r:-7}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/roompic.jpeg?raw=true", caption:"Late night group projects;)", cx:1187, cy:496, w:264, h:240, r:13, m:{cx:311,cy:385,w:128,h:115,r:13}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/hdpic.jpg?raw=true", caption:"With our project mentor from HDFC", cx:957,  cy:648, w:261, h:269, r:8, m:{cx:282,cy:566,w:130,h:134,r:8}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/sdipic.png?raw=true", caption:"Experience staging", cx:738,  cy:673, w:230, h:216, r:0, m:{cx:208,cy:616,w:115,h:108,r:0}},
+    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/figmapic.jpeg?raw=true", caption:"Prototyping antics", cx:1191, cy:686, w:241, h:291, r:21, m:{cx:382,cy:609,w:127,h:148,r:21}}
   ]
 };
 /* ===== WORK SECTION DATA — add your links here ===== */
@@ -255,11 +305,17 @@ wTabs.forEach(t => t.addEventListener('click', () => {
 renderWork('dx');
 
 /* fit 1512px canvas to viewport width */
-const fit = () => root.style.setProperty('--k', innerWidth / 1512);
+const mq = matchMedia('(max-width: 767px)');
+const fit = () => {
+  root.classList.toggle('mobile', mq.matches);
+  root.style.setProperty('--k', innerWidth / (mq.matches ? 402 : 1512));
+};
 addEventListener('resize', fit); fit();
 
 /* nav */
-CONFIG.nav.forEach(n => { const a = document.createElement('a'); a.href = n.href; a.innerHTML = `<span>${n.label}</span>`; a.style.width = n.w + 'px'; $('#nav').append(a); });
+CONFIG.nav.forEach(n => { const a = document.createElement('a'); a.href = n.href;
+  a.innerHTML = `<span><b class="d">${n.label}</b><b class="m">${n.short || n.label}</b></span>`;
+  a.style.setProperty('--nw', n.w); a.style.setProperty('--nmw', n.mw || n.w); $('#nav').append(a); });
 /* active nav underline: follows scroll and clicks */
 const navLinks = [...document.querySelectorAll('#nav a')];
 const hashes = navLinks.map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
@@ -270,7 +326,7 @@ const setActive = id => navLinks.forEach(a => a.classList.toggle('active', a.get
 
 function spy(){
   if (lock || !sections.length) return;
-  const line = 100 * num('--k') + innerHeight * 0.4;     // trigger line below the nav
+  const line = (root.classList.contains('mobile') ? 70 : 100) * num('--k') + innerHeight * 0.4;    // trigger line below the nav
   let cur = sections[0];
   sections.forEach(s => { if (s.getBoundingClientRect().top <= line) cur = s; });
   if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = sections[sections.length - 1];
@@ -290,7 +346,9 @@ spy();                                                   // HOME is active on lo
 /* slot helper (placeholder box, or image when src is set) */
 function slot(o){
   const d = document.createElement('div'); d.className = 'slot';
-  d.style.cssText = `left:${o.x}px;top:${o.y}px;width:${o.w}px;height:${o.h}px`;
+  const m = o.m;                                   // mobile box; leave out to hide on mobile
+  d.style.cssText = `--dx:${o.x};--dy:${o.y};--dw:${o.w};--dh:${o.h}` + (m ? `;--mx:${m.x};--my:${m.y};--mw:${m.w};--mh:${m.h}` : '');
+  if(!m) d.classList.add('no-m');
   if(o.src){ const i = new Image(); i.src = o.src; i.alt = o.label; d.append(i); d.classList.add('filled'); }
   else d.innerHTML = `${o.label}<br>${o.w}×${o.h}`;
   return d;
@@ -301,7 +359,7 @@ CONFIG.illustrations.forEach(o => $('#illos').append(slot(o)));
 function panelA(){
   const p = document.createElement('div'); p.className = 'panel';
   p.innerHTML = `<p class="hi">Hi there, I’m</p>`;
-  p.append(slot({label:CONFIG.nameSvg.label, src:CONFIG.nameSvg.src, x:120, y:46, w:296, h:132}));
+  p.append(slot({label:CONFIG.nameSvg.label, src:CONFIG.nameSvg.src, x:120, y:46, w:296, h:132, m:{x:102, y:30, w:189, h:72}}));
   return p;
 }
 const B = document.createElement('div'); B.className = 'panel b';
@@ -329,10 +387,23 @@ setTimeout(() => { advance(); loop(); }, num('--intro-delay'));
 /* polaroids */
 CONFIG.polaroids.forEach((p, i) => {
   const f = document.createElement('figure'); f.className = 'pola';
-  f.style.cssText = `--cx:${p.cx};--cy:${p.cy};--w:${p.w};--h:${p.h};--r:${p.r};--sx:${((p.cx-756)/756).toFixed(2)};--sy:${((p.cy-560)/300).toFixed(2)};--hue:${190+i*18}`;
+  const m = p.m || p;
+  f.style.cssText = `--dcx:${p.cx};--dcy:${p.cy};--dw:${p.w};--dh:${p.h};--dr:${p.r};--dsx:${((p.cx-756)/756).toFixed(2)};--dsy:${((p.cy-560)/300).toFixed(2)};` +
+    `--mcx:${m.cx};--mcy:${m.cy};--mw:${m.w};--mh:${m.h};--mr:${m.r};--msx:${((m.cx-201)/201).toFixed(2)};--msy:${((m.cy-540)/150).toFixed(2)};--hue:${190+i*18}`;
   const media = p.src ? `<img src="${p.src}" alt="${p.caption}">` : `<span class="ph">IMAGE ${i+1}<br>add link in CONFIG</span>`;
   f.innerHTML = `<div class="img">${media}<div class="ov"></div><p class="cap">${p.caption}</p></div>`;
+  f.addEventListener('pointerenter', e => { if(e.pointerType === 'mouse') f.classList.add('active'); });
+  f.addEventListener('pointerleave', e => { if(e.pointerType === 'mouse') f.classList.remove('active'); });
+  f.addEventListener('click', e => {               // tap on touch screens: toggle caption
+    if(e.pointerType === 'mouse') return;
+    const was = f.classList.contains('active');
+    document.querySelectorAll('.pola.active').forEach(x => x.classList.remove('active'));
+    if(!was) f.classList.add('active');
+  });
   $('#polas').append(f);
+});
+document.addEventListener('click', e => {           // tap elsewhere closes it
+  if(!e.target.closest('.pola')) document.querySelectorAll('.pola.active').forEach(x => x.classList.remove('active'));
 });
 
 </script>
