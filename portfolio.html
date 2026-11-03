@@ -137,6 +137,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 .w-item{display:block;color:inherit;text-decoration:none}
 .w-card{position:relative;height:var(--w-card-h);border:1px solid var(--w-border);border-radius:var(--w-card-r);overflow:hidden;background:#fff}
 .w-card img{width:100%;height:100%;object-fit:cover;display:block}
+.w-card picture{display:block;width:100%;height:100%}
 .w-ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#4a76e8;background:rgba(169,228,252,.2);font:12px/1.3 ui-monospace,Menlo,monospace}
 .w-meta{display:flex;align-items:flex-start;gap:12px;margin-top:16px}
 .w-meta .dot{flex:none;width:18px;height:18px;margin-top:10px;border-radius:50%;background:var(--w-dot)}
@@ -274,8 +275,8 @@ const CONFIG = {
 /* ===== WORK SECTION DATA — add your links here ===== */
 const WORK = {
   dx: [   // Digital Experiences (img = image link, link = project page, "" to skip)
-    {title:"Exploring trust in Digital Banking with HDFC", date:"/ May 2026", img:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/hdfccover.png?raw=true", link:""},
-    {title:"Clique - Designing for Behavioral Influence",  date:"/ Sep 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/e940a00b8ad03ce6fcebc62ad2ff1c052acb632f/cliquecover.svg", link:""},
+    {title:"Exploring trust in Digital Banking with HDFC", date:"/ May 2026", img:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/hdfccover.png?raw=true", link:"", imgM:"https://.../hdfccover-mobile.png?raw=true", link:""},
+    {title:"Clique - Designing for Behavioral Influence",  date:"/ Sep 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/e940a00b8ad03ce6fcebc62ad2ff1c052acb632f/cliquecover.svg", link:"", imgM:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/d4313f409f4ed9ef45c4f0b84776aeda057f9a92/cliquemobile.svg", link:"},
     {title:"Moveit - UX Design for Relocation Journeys",   date:"/ Feb 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/3a8aa058891338da4049fbc0f602a17bba2a4a4c/moveitcover.svg", link:""},
     {title:"Foodin - Service Design in Food Courts",       date:"/ Apr 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/d3f129735ef972ffc1294b37c5043fee378a0212/foodincover.svg", link:""}
   ],
@@ -290,9 +291,9 @@ const WORK = {
 function workItem(p){
   const el = document.createElement(p.link ? 'a' : 'div');
   el.className = 'w-item'; if(p.link) el.href = p.link;
-  const media = p.img ? `<img src="${p.img}" alt="${p.title}">` : `<span class="w-ph">Project image<br>add link in WORK</span>`;
-  el.innerHTML = `<div class="w-card">${media}</div><div class="w-meta"><span class="dot"></span><h3>${p.title}</h3><span class="date">${p.date}</span></div>`;
-  return el;
+  const media = p.img
+  ? `<picture>${p.imgM ? `<source media="(max-width:767px)" srcset="${p.imgM}">` : ''}<img src="${p.img}" alt="${p.title}" loading="lazy" decoding="async"></picture>`
+  : `<span class="w-ph">Project image<br>add link in WORK</span>`;
 }
 
 const wTabs = [...document.querySelectorAll('.w-tab')], wList = $('#w-list');
