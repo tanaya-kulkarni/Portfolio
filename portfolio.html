@@ -290,12 +290,28 @@ const WORK = {
 
 function workItem(p){
   const el = document.createElement(p.link ? 'a' : 'div');
-  el.className = 'w-item'; if(p.link) el.href = p.link;
+  function workItem(p){
+  const el = document.createElement(p.link ? 'a' : 'div');
+  el.className = 'w-item';
+  if(p.link) el.href = p.link;
+
   const media = p.img
-  ? `<picture>${p.imgM ? `<source media="(max-width:767px)" srcset="${p.imgM}">` : ''}<img src="${p.img}" alt="${p.title}" loading="lazy" decoding="async"></picture>`
-  : `<span class="w-ph">Project image<br>add link in WORK</span>`;
-  el.innerHTML = media;
-return el;
+    ? `<picture>
+        ${p.imgM ? `<source media="(max-width:767px)" srcset="${p.imgM}">` : ''}
+        <img src="${p.img}" alt="${p.title}" loading="lazy" decoding="async">
+       </picture>`
+    : `<span class="w-ph">Project image<br>add link in WORK</span>`;
+
+  el.innerHTML = `
+    <div class="w-card">${media}</div>
+    <div class="w-meta">
+      <span class="dot"></span>
+      <h3>${p.title}</h3>
+      <span class="date">${p.date}</span>
+    </div>
+  `;
+
+  return el;
 }
 
 const wTabs = [...document.querySelectorAll('.w-tab')], wList = $('#w-list');
