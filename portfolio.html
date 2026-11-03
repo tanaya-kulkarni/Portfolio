@@ -156,6 +156,7 @@ html.mobile{
   --ul-thickness:2px; --ul-gap:3px;
   --work-gap:54px; --w-sticky-top:70px; --w-tab-size:16px; --w-title-size:18px; --w-date-size:16px;
   --w-card-h:141px; --w-card-r:8px; --w-row-gap:32px; --w-col-gap:32px;
+  --down:30;
 }
 /* nav */
 .mobile .nav{height:calc(70px*var(--k))}
@@ -164,24 +165,24 @@ html.mobile{
 .mobile #nav .d{display:none}
 .mobile #nav .m{display:inline}
 /* hero */
-.mobile .hero-wrap{height:calc(670px*var(--k))}
-.mobile .stage{width:402px;height:740px;transform:scale(var(--k)) translateY(-70px)}
-.mobile .hero{top:70px;width:402px;height:670px}
-.mobile .tab{top:656px;width:402px;height:84px}
-.mobile .dash{left:11px;top:673px;width:380px}
-.mobile .note{left:84px;top:317px;width:97px;text-align:center}
+.mobile .hero-wrap{height:calc((670 + var(--down))*var(--k)*1px)}
+.mobile .stage{width:402px;height:calc((740 + var(--down))*1px);transform:scale(var(--k)) translateY(-70px)}
+.mobile .hero{top:70px;width:402px;height:calc((670 + var(--down))*1px)}
+.mobile .tab{top:calc((656 + var(--down))*1px);width:402px;height:84px}
+.mobile .dash{left:11px;top:calc((673 + var(--down))*1px);width:380px}
+.mobile .note{left:84px;top:calc((317 + var(--down))*1px);width:97px;text-align:center}
 .mobile .intro{left:4px;top:190px;width:394px;height:130px}
 .mobile .track{height:390px;transform:translateY(calc(var(--i,0)*-130px))}
 .mobile .panel{width:394px;height:130px}
 .mobile .panel .hi{height:20px;line-height:20px}
 .mobile .mb{display:inline}
-.mobile .panel.b{padding:0 0 0 70px}
+.mobile .panel.b{padding:0 16px;align-items:center;text-align:left}
 .mobile .panel.b p + p{margin-top:6px}
 
 /* slots + polaroids use the mobile coordinates */
 .mobile .slot{left:calc(var(--mx)*1px);top:calc(var(--my)*1px);width:calc(var(--mw)*1px);height:calc(var(--mh)*1px)}
 .mobile .slot.no-m{display:none}
-.mobile .pola{--cx:calc(var(--mcx) + var(--nx,0));--cy:var(--mcy);--w:var(--mw);--h:var(--mh);--r:var(--mr);--sx:var(--msx);--sy:var(--msy)}
+.mobile .pola{--cx:calc(var(--mcx) + var(--nx,0));--cy:calc(var(--mcy) + var(--down));--w:var(--mw);--h:var(--mh);--r:var(--mr);--sx:var(--msx);--sy:var(--msy)}
 .mobile .cap{padding:0 8px}
 /* work */
 .mobile .work{width:402px}
@@ -256,7 +257,7 @@ const CONFIG = {
     {label:"Postit", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/336eac130804113b95de8e21e82e75e83fe1eaa2/postit.svg", x:1338, y:621, w:61, h:58, m:null},
     {label:"Bulb left", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/bulbl.svg", x:126, y:553, w:74, h:78},
     {label:"Pencil left", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/c0dd449c51388206d1ed63cc6a8ca142f0539b65/pencill.svg", x:88, y:615, w:36, h:90},
-    {label:"Dashed arrow", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1f49efb89499a2a86b9621956232b6ea49312f43/arrow.svg", x:202, y:458, w:95, h:60, m:{x:179,y:342,w:54,h:42}}
+    {label:"Dashed arrow", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1f49efb89499a2a86b9621956232b6ea49312f43/arrow.svg", x:202, y:458, w:95, h:60, m:{x:179,y:372,w:54,h:42}}
   ],
   polaroids: [   // listed back-to-front (later = on top)
     {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/kgpic.jpeg?raw=true", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:499, w:353, h:330, r:-13, m:{cx:103,cy:512,w:175,h:163,r:-13}},
