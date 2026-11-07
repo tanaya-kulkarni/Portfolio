@@ -640,6 +640,7 @@ const T = (v,p) => v ? v : `<span class="pj-t">${p}</span>`;
 document.querySelectorAll('#p-hdfc [data-slot]').forEach(el => {
   const u = HDFC.assets[el.dataset.slot];
   if (u) { el.classList.add('f'); el.innerHTML = `<img src="${u}" alt="" loading="lazy">`; } else el.textContent = el.dataset.ph;
+  star:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/0d84d9500f8ae97fee813d31fe2178b89b3dabae/startitle.svg"
 });
 
 /* findings: flip all five boxes together */
