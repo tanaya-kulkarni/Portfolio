@@ -199,6 +199,74 @@ html.mobile{
 .mobile .w-meta h3{line-height:20px}
 .mobile .w-meta .date{width:89px;margin-top:2px;line-height:20px}
 .mobile .pola.active{z-index:70}
+/* ===== PROJECT PAGE: HDFC ===== */
+html.proj-open #home,html.proj-open #work,html.proj-open #about,html.proj-open #contact{display:none}
+.pj{display:none;zoom:var(--k);width:1512px;padding-bottom:140px;font-size:18px;line-height:1.5}
+html.proj-open .pj{display:block}
+.pj-crumb{position:sticky;top:100px;z-index:90;background:#fff;height:60px;padding:18px 0 0 260px;font-size:16px;color:var(--nav-color)}
+.pj-crumb a{color:inherit;text-decoration:none}.pj-crumb a:hover{color:#000;text-decoration:underline var(--ul-color) 2px}
+.pj-wrap{display:grid;grid-template-columns:255px 997px}
+.pj-side{position:sticky;top:190px;align-self:start;margin-top:197px;padding-left:54px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.pj-side button{background:none;border:0;padding:0;font:inherit;font-size:22px;line-height:1.3;color:var(--nav-color);cursor:pointer;text-align:left}
+.pj-side button.sub{font-size:16px;padding-left:16px;margin-top:-6px}
+.pj-side button.on{color:#000;text-decoration:underline var(--ul-color) 3px;text-underline-offset:6px}
+.pj-s{border:2px dashed #4a76e8;background:rgba(255,255,255,.45);color:#4a76e8;font:12px/1.2 ui-monospace,Menlo,monospace;display:grid;place-items:center;text-align:center;border-radius:12px;overflow:hidden}
+.pj-s.f{border:0;background:none}.pj-s img{width:100%;height:100%;object-fit:cover;display:block}
+.pj-in .pj-s img{object-fit:contain}
+.pj-sec{border-top:1px solid #000;margin-top:64px;padding-top:24px}
+.pj-l{margin:0 0 20px;font-size:18px;font-weight:500;letter-spacing:.06em;color:var(--nav-color)}
+.pj p{margin:0 0 16px}.pj h3{margin:0}
+.pj-ti{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;font-size:26px;font-weight:500}
+.pj-ti span{font-size:20px;font-weight:400;color:var(--nav-color)}
+.pj-meta{display:flex;justify-content:space-between;font-size:15px;color:var(--nav-color);margin-top:14px}
+.pj-two{display:flex;gap:40px;align-items:flex-start}.pj-two>div:first-child{flex:1}
+.pj-3{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.pj-cap{font-size:15px;color:var(--nav-color);margin:12px 0 !important}
+.pj-hmw{background:var(--hero-bg);border:1.5px solid var(--ul-color);border-radius:12px;padding:28px 56px;font-size:22px;font-weight:500;text-align:center;margin-top:28px}
+.pj-hmw2{background:#fff;border:1.5px solid var(--ul-color);border-radius:12px;padding:22px 40px;font-size:20px;font-weight:500;margin-top:24px}
+.pj-hmw2 mark,.pj-hmw mark{background:var(--tab-bg);padding:0 6px;border-radius:4px}
+.pj-imp{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:18px}
+.pj-imp b{display:block;font-size:40px;line-height:1;font-weight:500;color:var(--ul-color);margin-bottom:8px}
+.pj-imp p{font-size:15px;line-height:1.4}
+.pj-card2{border:1.5px solid var(--ul-color);border-radius:14px;padding:28px 32px 32px;margin-top:20px;position:relative}
+.pj-card2 header{display:flex;justify-content:space-between;font-size:22px;font-weight:500;margin-bottom:22px}
+.pj-card2 header em{font-style:normal;font-size:18px;color:var(--nav-color);font-weight:400}
+.pj-card2 header b{color:var(--ul-color);margin-right:12px}
+.pj-fr{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.pj-fb{height:167px;perspective:800px}
+.pj-fi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s var(--d,0ms)}
+.flip .pj-fi{transform:rotateY(180deg)}
+.pj-fi>div{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;font-size:14px;line-height:1.35;overflow:auto;background:var(--hero-bg)}
+.pj-fi .fk{transform:rotateY(180deg);background:var(--tab-bg)}.fk small{display:block;font-weight:500;margin-bottom:4px}
+.pj-btn{display:block;margin:18px 0 0 auto;border:1.5px solid var(--ul-color);background:#fff;border-radius:10px;font:inherit;font-size:16px;padding:5px 14px;cursor:pointer;transition:background .2s}
+.pj-btn:hover{background:var(--hero-bg)}
+.pj-t{opacity:.45;font-style:italic}
+.pj-opp{display:grid;grid-template-columns:repeat(3,305px);gap:41px;margin:24px 0 0 0}
+.pj-card{border:1.5px solid var(--ul-color);border-radius:14px;height:360px;padding:20px 24px;font-size:15px;line-height:1.4}
+.pj-card h5{margin:0 0 18px;text-align:center;font-size:28px;font-weight:500}
+.pj-k{display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.05em;margin:0 0 6px !important;color:var(--nav-color)}
+.pj-k i{width:8px;height:8px;border-radius:50%;background:var(--ul-color)}
+.pj-card>div{margin-bottom:20px}
+.pj-bt{margin:22px 0 10px;font-size:22px;font-weight:500}
+.pj-box{background:var(--hero-bg);border:1.5px solid var(--ul-color);border-radius:12px;padding:12px 16px;min-height:75px;font-size:15px}
+.pj-per{display:flex;gap:24px;align-items:center;margin:28px 0 24px}
+.pj-per figure{margin:0;text-align:center;font-size:16px;font-weight:500;letter-spacing:.05em}
+.pj-bub{position:relative;width:415px;border:2px solid var(--ul-color);border-radius:44px;padding:30px 40px;font-size:18px;line-height:1.4}
+.pj-panel{position:relative;height:490px;background:var(--hero-bg);border:1.5px solid var(--ul-color);border-radius:14px}
+.pj-panel h4{position:absolute;left:24px;top:20px;margin:0;font-size:18px;font-weight:500;z-index:2}
+.pj-panel>*,.pj-in{transition:opacity .3s}.pj-panel.out>*,.pj-in.out{opacity:0}
+.pj-in{position:absolute;inset:0}
+.pj-in>.pop{animation:pjpop .45s both}
+@keyframes pjpop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.pj-dlg{position:absolute;left:790px;top:250px;width:190px;margin:0 !important;font-size:16px;line-height:1.35}
+.pj-dots{position:absolute;left:36px;bottom:12px;display:flex;gap:6px}
+.pj-dots i{width:8px;height:8px;border-radius:50%;background:#fff;border:1px solid var(--ul-color);cursor:pointer}.pj-dots i.on{background:var(--ul-color)}
+.pj-aud{position:absolute;left:790px;bottom:22px;width:190px;display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--ul-color);border-radius:30px;padding:6px 12px 6px 6px;font-size:12px}
+.pj-aud button{flex:none;width:28px;height:28px;border:0;border-radius:50%;background:var(--ul-color);color:#fff;cursor:pointer;font-size:11px}
+.pj-aud input{flex:1;min-width:0;accent-color:var(--ul-color)}
+.pj-next{display:block;margin:20px 0 0 auto;width:202px;height:40px;border:0;border-radius:10px;background:var(--tab-bg);font:inherit;font-size:18px;cursor:pointer;transition:transform .2s}
+.pj-next:hover{transform:translateX(4px)}
+.pj-ref{border:1.5px solid var(--ul-color);border-radius:12px;padding:22px 30px;font-size:16px;line-height:1.5;margin-bottom:22px}.pj-ref p{margin:0}
 </style>
 </head>
 <body>
@@ -229,6 +297,62 @@ html.mobile{
 </section>
 <section id="about" class="stub">ABOUT ME — add your section / page here</section>
 <section id="contact" class="stub">CONTACT — add your section / page here</section>
+<section id="p-hdfc" class="pj">
+<div class="pj-crumb"><a href="#work">Digital Experiences</a> / Exploring trust in Digital Banking</div>
+<div class="pj-wrap">
+<aside class="pj-side">
+<button data-go="p-ov" class="on">Overview</button><button data-go="p-inv">Investigation</button><button data-go="p-opp">Opportunity</button><button data-go="p-con">Concepts</button><button data-go="p-ya" class="sub">-Young Adults</button><button data-go="p-se" class="sub">-Seniors</button><button data-go="p-ref">Reflections</button>
+</aside>
+<div class="pj-main">
+<div class="pj-s" data-slot="hero" data-ph="Hero image · 992×380" style="height:380px"></div>
+<div class="pj-ti"><h3>Exploring trust in Digital Banking</h3><span>/ May 2026</span></div>
+<div style="font-size:18px;margin-top:6px">Live Industry Project with HDFC</div>
+<div class="pj-meta"><span>Duration : 5 weeks</span><span>Collaborators - Gargi Gautham, Niranjani V</span><span>Mentor : Saurabh Gokhale</span></div>
+
+<section id="p-ov" class="pj-sec"><h3 class="pj-l">OVERVIEW</h3>
+<div class="pj-two"><div><p style="font-weight:500;font-size:22px">HDFC Bank is one of India’s leading private sector banks, serving millions of customers through a wide range of financial products and services.</p><p>As banking increasingly moves online, HDFC has been expanding its digital banking experience, making more services available through its mobile app and online channels. The aim is to make everyday banking more convenient, accessible and seamless.</p></div>
+<div class="pj-s" data-slot="overview" data-ph="Image · 273×281" style="width:273px;height:281px;flex:none"></div></div>
+<p style="font-size:22px;margin-top:48px">But availability does not necessarily translate to confidence.</p>
+<div class="pj-3"><div class="pj-s" data-slot="rev1" data-ph="Review screenshot · 318×245" style="height:245px"></div><div class="pj-s" data-slot="rev2" data-ph="Review screenshot · 318×245" style="height:245px"></div><div class="pj-s" data-slot="rev3" data-ph="Review screenshot · 318×245" style="height:245px"></div></div>
+<p class="pj-cap">User reviews and difficulties while using digital banking services</p>
+<p>Customer reviews and online discussions reveal recurring difficulties with login flows, navigation and technical errors. Even when banking services are available digitally, completing tasks independently may not always feel straightforward.</p>
+<div class="pj-hmw">So, what stands between having access to digital banking and using it with confidence?</div></section>
+
+<section id="p-inv" class="pj-sec"><h3 class="pj-l">INVESTIGATION</h3>
+<p>Independence in banking can mean different things to different people. Our initial research aim was to find out the factors that created dependency on others for financial tasks.</p>
+<div class="pj-s" data-slot="mindmap" data-ph="Research questions mind-map (export SVG) · 997×400" style="height:400px;border-radius:0"></div>
+<p style="margin-top:36px">Along with the above questions, we also framed some hypotheses to guide our research.</p>
+<div class="pj-imp"><div><b>1</b><p>The intangibility of digital money reduces users’ sense of control compared to physical cash.</p></div><div><b>2</b><p>Age naturally affects comfortable usage of digital financial platforms.</p></div><div><b>3</b><p>Knowledge of eligible services may not be enough to translate into usage.</p></div><div><b>4</b><p>Perceived sense of support while transacting can make or break users’ confidence.</p></div></div>
+<p style="margin-top:40px">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
+<div class="pj-card2" id="pj-survey"><header><span><b>01</b>Quantitative Survey Findings</span><em>80 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div>
+<div class="pj-card2" id="pj-interview"><header><span><b>02</b>Qualitative Interview Findings</span><em>17 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div></section>
+
+<section id="p-opp" class="pj-sec"><h3 class="pj-l">OPPORTUNITY</h3>
+<p>Our research helped us identify age-specific behaviours, challenges and motivations around independent digital banking. To narrow our focus, we decided to explore two ends of the age spectrum: young adults aged 21–30 and seniors 60+.</p>
+<div class="pj-opp" id="pj-opp"></div>
+<div class="pj-hmw2">How might we design a banking system that helps <mark>young adults</mark> confidently progress from routine transactions to more complex financial decisions, so that they can build long-term financial independence and make informed choices on their own?</div>
+<div class="pj-hmw2">How might we design a banking system that builds trust and reduces fear for <mark>older adults</mark> so that they can gradually move from dependence on others toward confident and independent use of financial services?</div></section>
+
+<section id="p-con" class="pj-sec"><h3 class="pj-l">CONCEPTS</h3>
+<p>Based on our opportunity statements, we developed feature concepts that could integrate into HDFC’s existing digital banking ecosystem. Each concept responds to specific insights from the two age groups, while considering the current capabilities of digital banking, emerging developments and possibilities for the future.</p></section>
+
+<section id="p-ya" style="margin-top:48px"><h3 class="pj-l">01 YOUNG ADULTS</h3>
+<div class="pj-per"><figure><div class="pj-s" data-slot="ya" data-ph="Persona illustration · 245×343" style="width:245px;height:343px"></div>ROHAN, 23</figure><div class="pj-bub">I frequently use digital financial tools for daily tasks, but lack confidence when making complex financial decisions independently.</div></div>
+<div class="pj-panel" id="pj-ya"></div><button class="pj-next" data-next="ya">Next Concept →</button>
+<h3 style="font-size:22px;font-weight:500;margin-top:36px">How does this impact Rohan?</h3>
+<div class="pj-imp"><div><b>1</b><p>Increased financial awareness, both through knowledge of terms and upcoming services that could be relevant to him.</p></div><div><b>2</b><p>Planning for the future becomes a default, with small steps everyday contributing to personal goals. Visible progress builds consistency.</p></div><div><b>3</b><p>Asking for help is low-effort and conversational. He feels informed as well supported by a community of peers.</p></div><div><b>4</b><p>He can now approach larger decisions like travel, investments, higher studies with more clarity.</p></div></div></section>
+
+<section id="p-se" style="margin-top:72px"><h3 class="pj-l">02 SENIORS</h3>
+<div class="pj-per"><figure><div class="pj-s" data-slot="se" data-ph="Persona illustration · 245×343" style="width:245px;height:343px"></div>MEENA, 64</figure><div class="pj-bub">I often fully delegate financial tasks to trusted people, with the absence of guided and gradual learning pathways limiting my transition toward independence.</div></div>
+<div class="pj-panel" id="pj-se"></div><button class="pj-next" data-next="se">Next Concept →</button>
+<h3 style="font-size:22px;font-weight:500;margin-top:36px">How does this impact Meena?</h3>
+<div class="pj-imp"><div><b>1</b><p>Understanding of digital finance and therefore usage increases. Daily tasks become comfortable with practice</p></div><div><b>2</b><p>Recovery routes seem visible and accessible, increasing confidence to perform transactions</p></div><div><b>3</b><p>Repeated transactions help build familiarity and lessen dependence on helpers or in-app guidance.</p></div><div><b>4</b><p>She can now approach new services she once avoided, due to lack of confidence or knowledge.</p></div></div></section>
+
+<section id="p-ref" class="pj-sec"><h3 class="pj-l">REFLECTIONS</h3>
+<div class="pj-ref"><p>Exploring a vast sector like banking made me realise how complex user journeys can be, and how differently people experience the same service. Even within the same age group, needs, behaviours and levels of confidence varied. Making sense of these differences and deciding where to narrow our focus was one of the biggest challenges of the project.</p></div>
+<div class="pj-ref"><p>Interviews with older adults made me more conscious of the things we often take for granted as designers. Details like colour contrast, button sizes and the language used in interface copy can significantly influence how approachable an experience feels. What might seem like a small design decision can determine whether someone feels comfortable navigating an interface or alienated by it.</p></div>
+<div class="pj-ref"><p>We initially assumed that younger users would need less support with digital banking. However, our research challenged this assumption. Even people who regularly use digital tools and appear independent can hesitate when faced with unfamiliar financial decisions or services. It made me realise that independence isn’t simply about being able to navigate an interface; it’s also about having the confidence and trust to explore what a platform offers. Ultimately, the opportunity lies in helping users feel capable of making informed decisions and accessing services that could benefit them.</p></div></section>
+</div></div></section>
 
 <script>
 const $ = s => document.querySelector(s);
@@ -477,6 +601,115 @@ if (location.search.includes('drag')) {
   });
   report();
 }
+/* ===== PROJECT PAGE: HDFC ===== */
+/* CONFIG — add links/text here. "" = placeholder shown. */
+const E = (x,y,w,h,src="") => ({x,y,w,h,src});          // image box inside the blue panel: E(x, y, width, height, "link")
+const L1 = () => [E(581,100,120,148),E(583,260,118,178),E(715,40,123,178),E(448,260,120,150),E(445,82,125,166),E(313,274,120,178)];
+const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
+const HDFC = {
+  assets:{hero:"",overview:"",rev1:"",rev2:"",rev3:"",mindmap:"",ya:"",se:""},
+  survey:   [{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""}],   // f = finding text (front), q = question (back)
+  interview:[{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""}],
+  opp:[{ctx:"",mot:"",barrier:""},{ctx:"",mot:""},{ctx:"",mot:"",barrier:""}], // 21-30, 31-60, 60+  (no barrier box on 31-60)
+  concepts:{
+    ya:[
+      {title:"CONCEPT 1 - Financial Vision Board", text:"While onboarding to the bank’s platform, users are presented with a short quiz",
+       screens:[{phone:"",els:L1()},{phone:"",els:L1()},{phone:"",els:L1()}]},          // phone = gif/image link
+      {title:"CONCEPT 2 - Add name", text:"Add dialog text", screens:[{phone:"",els:L1()},{phone:"",els:L1()}]},
+      {title:"CONCEPT 3 - Add name", text:"Add dialog text", screens:[{phone:"",els:L1()}]}
+    ],
+    se:[
+      {title:"CONCEPT 1 - Add a helper", text:"While onboarding the user can add a trusted family member/helper that can monitor and guide their steps on the platform",
+       screens:[{phone:"",els:L2()},{phone:"",els:L2()}]},
+      {title:"CONCEPT 2 - Add name", text:"Add dialog text", audio:"", screens:[{phone:"",els:L2()}]}   // audio = mp3 link, shows play button + slider
+    ]
+  }
+};
+
+const T = (v,p) => v ? v : `<span class="pj-t">${p}</span>`;
+document.querySelectorAll('#p-hdfc [data-slot]').forEach(el => {
+  const u = HDFC.assets[el.dataset.slot];
+  if (u) { el.classList.add('f'); el.innerHTML = `<img src="${u}" alt="" loading="lazy">`; } else el.textContent = el.dataset.ph;
+});
+
+/* findings: flip all five boxes together */
+[['survey','pj-survey'],['interview','pj-interview']].forEach(([k,id]) => {
+  const c = $('#'+id);
+  c.querySelector('.pj-fr').innerHTML = HDFC[k].map((x,i) =>
+    `<div class="pj-fb" style="--d:${i*70}ms"><div class="pj-fi"><div>${T(x.f,'Finding text')}</div><div class="fk"><small>Q${i+1}</small>${T(x.q,'Question text')}</div></div></div>`).join('');
+  const b = c.querySelector('button');
+  b.onclick = () => { c.classList.toggle('flip'); b.textContent = c.classList.contains('flip') ? 'Back to findings' : 'What questions did we ask?'; };
+});
+
+/* opportunity cards */
+$('#pj-opp').innerHTML = ['21-30','31-60','60+'].map((a,i) => { const o = HDFC.opp[i];
+  return `<div><div class="pj-card"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div></div>` +
+  (o.barrier !== undefined ? `<h5 class="pj-bt">Biggest Barrier</h5><div class="pj-box">${T(o.barrier,'Add text')}</div>` : '') + `</div>`; }).join('');
+
+/* concepts */
+const pj = {ya:{c:0,s:0}, se:{c:0,s:0}}, last = {ya:Date.now(), se:Date.now()};
+const cur = g => HDFC.concepts[g][pj[g].c];
+const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+const stopAud = () => document.querySelectorAll('#p-hdfc audio').forEach(a => a.pause());
+const box = (src,x,y,w,h,ph) => `<div class="pj-s pop${src?' f':''}" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px">${src?`<img src="${src}" alt="">`:ph}</div>`;
+
+function render(g){
+  const C = cur(g), S = C.screens[pj[g].s], P = $('#pj-'+g);
+  P.innerHTML = `<h4>${C.title}</h4><div class="pj-in">${box(S.phone,36,79,187,386,'Phone UI<br>gif / image')}` +
+    S.els.map((e,i) => box(e.src,e.x,e.y,e.w,e.h,'Image '+(i+1))).join('') +
+    `<p class="pj-dlg pop">${C.text}</p>` +
+    (C.audio !== undefined ? `<div class="pj-aud pop"><button aria-label="Play">▶</button><input type="range" min="0" max="100" value="0"><span>0:00</span><audio src="${C.audio}" preload="none"></audio></div>` : '') +
+    (C.screens.length > 1 ? `<div class="pj-dots">${C.screens.map((_,i) => `<i data-d="${i}" class="${i===pj[g].s?'on':''}"></i>`).join('')}</div>` : '') + `</div>`;
+  P.querySelectorAll('.pj-in>.pop').forEach((e,i) => e.style.animationDelay = i*70 + 'ms');
+  const w = P.querySelector('.pj-aud');
+  if (w) { const a = w.querySelector('audio'), b = w.querySelector('button'), r = w.querySelector('input'), t = w.querySelector('span');
+    b.onclick = () => a.paused ? a.play() : a.pause();
+    a.onplay = () => b.textContent = '❚❚';
+    a.onpause = a.onended = () => b.textContent = '▶';
+    a.ontimeupdate = () => { r.value = a.duration ? a.currentTime/a.duration*100 : 0; t.textContent = fmt(a.currentTime); };
+    r.oninput = () => { if (a.duration) a.currentTime = r.value/100*a.duration; }; }
+}
+function swap(g, full){            // fade whole panel (new concept) or just the stage (next screen)
+  const P = $('#pj-'+g), t = full ? P : P.querySelector('.pj-in');
+  stopAud(); t.classList.add('out');
+  setTimeout(() => { render(g); t.classList.remove('out'); }, 320);
+}
+['ya','se'].forEach(g => {
+  render(g);
+  $('#pj-'+g).addEventListener('click', e => { const d = e.target.dataset.d; if (d === undefined) return; pj[g].s = +d; last[g] = Date.now(); swap(g,false); });
+});
+document.querySelectorAll('[data-next]').forEach(b => b.onclick = () => {
+  const g = b.dataset.next; pj[g].c = (pj[g].c + 1) % HDFC.concepts[g].length; pj[g].s = 0; last[g] = Date.now(); swap(g,true);
+});
+setInterval(() => ['ya','se'].forEach(g => {                 // every 5s, move to the concept's next screen
+  if (!root.classList.contains('proj-open') || Date.now() - last[g] < 5000) return;
+  const n = cur(g).screens.length; if (n < 2) return;
+  pj[g].s = (pj[g].s + 1) % n; last[g] = Date.now(); swap(g,false);
+}), 500);
+
+/* side nav */
+const sn = [...document.querySelectorAll('.pj-side button')];
+sn.forEach(b => b.onclick = () => scrollTo({top: $('#'+b.dataset.go).getBoundingClientRect().top + scrollY - 175*num('--k'), behavior:'smooth'}));
+addEventListener('scroll', () => {
+  if (!root.classList.contains('proj-open')) return;
+  const L = 200*num('--k'); let c = sn[0];
+  sn.forEach(b => { if ($('#'+b.dataset.go).getBoundingClientRect().top <= L) c = b; });
+  sn.forEach(b => b.classList.toggle('on', b === c));
+}, {passive:true});
+
+/* router: #project/hdfc opens the project in the same tab; any other hash returns to the site */
+function route(){
+  const open = location.hash === '#project/hdfc', was = root.classList.contains('proj-open');
+  root.classList.toggle('proj-open', open);
+  if (open) { lock = true; setActive('work'); scrollTo({top:0, behavior:'instant'}); }
+  else if (was) {
+    lock = false; stopAud();
+    if (location.hash === '#work') renderWork('dx');
+    try { (document.querySelector(location.hash || '#home') || $('#home')).scrollIntoView(); } catch(e) {}
+    spy();
+  }
+}
+addEventListener('hashchange', route); route();
 </script>
 </body>
 </html>
