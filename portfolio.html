@@ -210,21 +210,26 @@ html.proj-open #home,html.proj-open #work,html.proj-open #about,html.proj-open #
 html.proj-open .pj{display:block}
 .pj-crumb{position:sticky;top:100px;z-index:90;background:#fff;height:60px;padding:18px 0 0 260px;font-size:16px;color:var(--nav-color)}
 .pj-crumb a{color:inherit;text-decoration:none}.pj-crumb a:hover{color:#000;text-decoration:underline var(--ul-color) 2px}
+.pj-crumb b{font-weight:700}
 .pj-wrap{display:grid;grid-template-columns:255px 997px}
 .pj-side{position:sticky;top:190px;align-self:start;margin-top:197px;padding-left:54px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
-.pj-side button{background:none;border:0;padding:0;font:inherit;font-size:22px;line-height:1.3;color:var(--nav-color);cursor:pointer;text-align:left}
-.pj-side button.sub{font-size:16px;padding-left:16px;margin-top:-6px}
-.pj-side button.on{color:#000;text-decoration:underline var(--ul-color) 3px;text-underline-offset:6px}
+.pj-side button{background:none;border:0;padding:0;font:inherit;font-size:22px;font-weight:400;line-height:1.3;color:var(--nav-color);cursor:pointer;text-align:left}
+.pj-side button.on{font-size:24px;font-weight:500;color:#000}
+.pj-side button.sub{font-size:20px;padding-left:16px;margin-top:-6px}
+.pj-side button.sub.on{font-size:22px}
 .pj-s{border:2px dashed #4a76e8;background:rgba(255,255,255,.45);color:#4a76e8;font:12px/1.2 ui-monospace,Menlo,monospace;display:grid;place-items:center;text-align:center;border-radius:12px;overflow:hidden}
 .pj-s.f{border:0;background:none}.pj-s img{width:100%;height:100%;object-fit:cover;display:block}
 .pj-in .pj-s img{object-fit:contain}
 .pj-sec{margin-top:64px;padding-top:24px;border-top:2px dashed var(--tab-bg)}
-.pj-l{margin:0 0 32px;font-size:18px;font-weight:500;letter-spacing:.06em;line-height:1;color:var(--nav-color)}
+.pj h3.pj-l{margin:0 0 32px;font-size:18px;font-weight:500;letter-spacing:.06em;line-height:1;color:var(--nav-color)}
 .pj p{margin:0 0 16px}.pj h3{margin:0}
-.pj-ti{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;font-size:26px;font-weight:500}
+.pj-ti{display:flex;justify-content:space-between;align-items:center;margin-top:22px;font-size:26px;font-weight:500}
 .pj-ti span{font-size:20px;font-weight:400;color:var(--nav-color)}
 .pj-meta{display:flex;justify-content:space-between;gap:24px;font-size:20px;color:var(--nav-color);margin-top:32px}
-.pj-two{display:flex;gap:40px;align-items:flex-start}.pj-two>div:first-child{flex:1}
+.pj-two{display:flex;gap:40px;align-items:stretch}.pj-two>div:first-child{flex:1}
+.pj-two>div:first-child p:last-child{margin-bottom:0}
+.pj-two .pj-s{position:relative}
+.pj-two .pj-s img{position:absolute;inset:0}
 .pj-3{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
 .pj-cap{font-size:15px;color:var(--nav-color);margin:12px 0 !important}
 .pj-hmw{background:var(--hero-bg);border:1.5px solid var(--ul-color);border-radius:12px;padding:28px 56px;font-size:22px;font-weight:500;text-align:center;margin-top:28px}
@@ -303,14 +308,14 @@ html.proj-open .pj{display:block}
 <section id="about" class="stub">ABOUT ME — add your section / page here</section>
 <section id="contact" class="stub">CONTACT — add your section / page here</section>
 <section id="p-hdfc" class="pj">
-<div class="pj-crumb"><a href="#work">Digital Experiences</a> / Exploring trust in Digital Banking</div>
+<div class="pj-crumb"><a href="#work">Digital Experiences</a> / <b>Exploring trust in Digital Banking</b></div>
 <div class="pj-wrap">
 <aside class="pj-side">
 <button data-go="p-ov" class="on">Overview</button><button data-go="p-inv">Investigation</button><button data-go="p-opp">Opportunity</button><button data-go="p-con">Concepts</button><button data-go="p-ya" class="sub">-Young Adults</button><button data-go="p-se" class="sub">-Seniors</button><button data-go="p-ref">Reflections</button>
 </aside>
 <div class="pj-main">
-<div class="pj-s" data-slot="hero" data-ph="Hero image · 992×380" style="height:380px"></div>
-<div class="pj-ti"><h3>Exploring trust in Digital Banking</h3><span>/ May 2026</span></div>
+<div class="pj-s" data-slot="overview" data-ph="Image · 273×281" style="width:273px;flex:none"></div>
+<div class="pj-ti"><div class="pj-s" data-slot="star" data-ph="★" style="width:29px;height:30px;flex:none;margin-right:11px;border-radius:6px"></div><h3 style="flex:1">Exploring trust in Digital Banking</h3><span>/ May 2026</span></div>
 <div style="font-size:18px;margin-top:6px">Live Industry Project with HDFC</div>
 <div class="pj-meta"><span>Duration : 5 weeks</span><span>Collaborators - Gargi Gautham, Niranjani V</span><span>Mentor : Saurabh Gokhale</span></div>
 
