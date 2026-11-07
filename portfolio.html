@@ -49,9 +49,6 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);ove
 #nav a:hover{color:var(--text)}
 #nav b{font-weight:inherit}
 #nav a, #nav a span, #nav b{font-weight:400}
-html.proj-open #nav a.active,
-html.proj-open #nav a.active span,
-html.proj-open #nav a.active b{font-weight:700}
 #nav a{width:calc(var(--nw)*1px)}
 #nav .m{display:none}
 .slot{left:calc(var(--dx)*1px);top:calc(var(--dy)*1px);width:calc(var(--dw)*1px);height:calc(var(--dh)*1px)}
@@ -315,7 +312,7 @@ html.proj-open .pj{display:block}
 </aside>
 <div class="pj-main">
 <div class="pj-s" data-slot="overview" data-ph="Image · 273×281" style="width:273px;flex:none"></div>
-<div class="pj-ti"><div class="pj-s" data-slot="star" data-ph="★" style="width:29px;height:30px;flex:none;margin-right:11px;border-radius:6px"></div><h3 style="flex:1">Exploring trust in Digital Banking</h3><span>/ May 2026</span></div>
+<div class="pj-ti"><img src="https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/0d84d9500f8ae97fee813d31fe2178b89b3dabae/startitle.svg" alt="" style="width:29px;height:30px;flex:none;margin-right:11px"><h3 style="flex:1">Exploring trust in Digital Banking</h3><span>/ May 2026</span></div>
 <div style="font-size:18px;margin-top:6px">Live Industry Project with HDFC</div>
 <div class="pj-meta"><span>Duration : 5 weeks</span><span>Collaborators - Gargi Gautham, Niranjani V</span><span>Mentor : Saurabh Gokhale</span></div>
 
@@ -640,7 +637,6 @@ const T = (v,p) => v ? v : `<span class="pj-t">${p}</span>`;
 document.querySelectorAll('#p-hdfc [data-slot]').forEach(el => {
   const u = HDFC.assets[el.dataset.slot];
   if (u) { el.classList.add('f'); el.innerHTML = `<img src="${u}" alt="" loading="lazy">`; } else el.textContent = el.dataset.ph;
-  star:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/0d84d9500f8ae97fee813d31fe2178b89b3dabae/startitle.svg"
 });
 
 /* findings: flip all five boxes together */
