@@ -229,7 +229,7 @@ html.proj-open .pj{display:block}
 .pj-s img{position:absolute;inset:0;width:100%;height:100%}
 .pj-3{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
 .pj-cap{font-size:15px;color:var(--nav-color);margin:12px 0 !important}
-.pj-hmw{background:var(--hero-bg);border:1.5px solid var(--ul-color);border-radius:12px;padding:28px 56px;font-size:22px;font-weight:500;text-align:center;margin-top:28px}
+.pj-hmw{background:var(--hero-bg);border-radius:12px;padding:28px 56px;font-size:22px color:var(--ul-color);font-weight:600;text-align:center;margin-top:28px}
 .pj-hmw2{background:#fff;border:1.5px solid var(--ul-color);border-radius:12px;padding:22px 40px;font-size:20px;font-weight:500;margin-top:24px}
 .pj-hmw2 mark,.pj-hmw mark{background:var(--tab-bg);padding:0 6px;border-radius:4px}
 .pj-imp{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:18px}
@@ -295,7 +295,7 @@ html.proj-open .pj{display:block}
   <h2 class="w-title">Featured Projects</h2>
   <div class="w-grid">
     <aside class="w-side">
-      <button class="w-tab active" data-tab="dx">Digital Experiences</button>
+      <button class="w-tab active" data-tab="dx"> Digital Experiences</button>
       <span class="w-div"></span>
       <button class="w-tab" data-tab="rs">Research &amp; Systems</button>
     </aside>
@@ -311,23 +311,23 @@ html.proj-open .pj{display:block}
 <button data-go="p-ov" class="on">Overview</button><button data-go="p-inv">Investigation</button><button data-go="p-opp">Opportunity</button><button data-go="p-con">Concepts</button><button data-go="p-ya" class="sub">-Young Adults</button><button data-go="p-se" class="sub">-Seniors</button><button data-go="p-ref">Reflections</button>
 </aside>
 <div class="pj-main">
-<div class="pj-s" data-slot="overview" data-ph="Image · 273×281" style="width:992px;flex:none"></div>
+<div class="pj-s" data-slot="hero" data-ph="Hero image · 992×380" style="height:380px"></div>
 <div class="pj-ti"><img src="https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/0d84d9500f8ae97fee813d31fe2178b89b3dabae/startitle.svg" alt="" style="width:29px;height:30px;flex:none;margin-right:11px"><h3 style="flex:1">Exploring trust in Digital Banking</h3><span>/ May 2026</span></div>
 <div style="font-size:22px;margin-top:6px">Live Industry Project with HDFC</div>
 <div class="pj-meta"><span>Duration : 5 weeks</span><span>Collaborators - Gargi Gautham, Niranjani V</span><span>Mentor : Saurabh Gokhale</span></div>
 
 <section id="p-ov" class="pj-sec"><h3 class="pj-l">OVERVIEW</h3>
-<div class="pj-two"><div><p style="font-weight:500;font-size:22px">HDFC Bank is one of India’s leading private sector banks, serving millions of customers through a wide range of financial products and services.</p><p>As banking increasingly moves online, HDFC has been expanding its digital banking experience, making more services available through its mobile app and online channels. The aim is to make everyday banking more convenient, accessible and seamless.</p></div>
+<div class="pj-two"><div><p style="font-weight:500;font-size:24px">HDFC Bank is one of India’s leading private sector banks, serving millions of customers through a wide range of financial products and services.</p><p>As banking increasingly moves online, HDFC has been expanding its digital banking experience, making more services available through its mobile app and online channels. The aim is to make everyday banking more convenient, accessible and seamless.</p></div>
 <div class="pj-s" data-slot="overview" data-ph="Image · 273×281" style="width:273px;height:281px;flex:none"></div></div>
-<p style="font-size:22px;margin-top:48px">But availability does not necessarily translate to confidence.</p>
+<p style="font-weight:500;font-size:22px;margin-top:48px">But availability does not necessarily translate to confidence.</p>
 <div class="pj-3"><div class="pj-s" data-slot="rev1" data-ph="Review screenshot · 318×245" style="height:245px"></div><div class="pj-s" data-slot="rev2" data-ph="Review screenshot · 318×245" style="height:245px"></div><div class="pj-s" data-slot="rev3" data-ph="Review screenshot · 318×245" style="height:245px"></div></div>
 <p class="pj-cap">User reviews and difficulties while using digital banking services</p>
-<p>Customer reviews and online discussions reveal recurring difficulties with login flows, navigation and technical errors. Even when banking services are available digitally, completing tasks independently may not always feel straightforward.</p>
+<p style="font-weight:400;font-size:22px;margin-top:48px">Customer reviews and online discussions reveal recurring difficulties with login flows, navigation and technical errors. Even when banking services are available digitally, completing tasks independently may not always feel straightforward.</p>
 <div class="pj-hmw">So, what stands between having access to digital banking and using it with confidence?</div></section>
 
 <section id="p-inv" class="pj-sec"><h3 class="pj-l">INVESTIGATION</h3>
 <p>Independence in banking can mean different things to different people. Our initial research aim was to find out the factors that created dependency on others for financial tasks.</p>
-<div class="pj-s" data-slot="mindmap" data-ph="Research questions mind-map (export SVG) · 997×400" style="height:400px;border-radius:0"></div>
+<div class="pj-s" img src="https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/0337cfcd8d73dd3d31e8b8be379e21469bda7537/dependency.svg" style="height:400px;border-radius:0"></div>
 <p style="margin-top:36px">Along with the above questions, we also framed some hypotheses to guide our research.</p>
 <div class="pj-imp"><div><b>1</b><p>The intangibility of digital money reduces users’ sense of control compared to physical cash.</p></div><div><b>2</b><p>Age naturally affects comfortable usage of digital financial platforms.</p></div><div><b>3</b><p>Knowledge of eligible services may not be enough to translate into usage.</p></div><div><b>4</b><p>Perceived sense of support while transacting can make or break users’ confidence.</p></div></div>
 <p style="margin-top:40px">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
