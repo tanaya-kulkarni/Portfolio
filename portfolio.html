@@ -378,7 +378,7 @@ const CONFIG = {
 {label:"ABOUT ME", href:"#about",   w:160, mw:56, short:"ABOUT"},
 {label:"CONTACT",  href:"#contact", w:160, mw:73}
   ],
-  nameSvg: {label:"Name SVG", src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/name.png?raw=true"},            // "Tanaya" handwritten SVG (332×126)
+  nameSvg: {label:"Name SVG", src:"name.png"},            // "Tanaya" handwritten SVG (332×126)
   illustrations: [
     {label:"Disco ball", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1886f551abc1f4464a0ecef673433fb0f75e336f/discoball.svg", x:54,   y:100, w:214, h:206, m:{x:15,y:70,w:115,h:111}},
     {label:"Cake slice L", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/32fc055d298a2c7e83f77b98fc0872321e7b3da6/cake.svg", x:417,  y:209, w:61, h:59, m:null},
@@ -392,22 +392,22 @@ const CONFIG = {
     {label:"Dashed arrow", src:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/1f49efb89499a2a86b9621956232b6ea49312f43/arrow.svg", x:202, y:458, w:95, h:60, m:{x:179,y:372,w:54,h:42}}
   ],
   polaroids: [   // listed back-to-front (later = on top)
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/kgpic.jpeg?raw=true", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:499, w:353, h:330, r:-13, m:{cx:103,cy:512,w:175,h:163,r:-13}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/repairpic.jpeg?raw=true", caption:"Wall full of our research activities", cx:366,  cy:668, w:263, h:318, r:-12, m:{cx:81,cy:610,w:118,h:152,r:-12}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/khgpic.jpeg?raw=true", caption:"Conducting interviews for Khaki Heritage Foundation", cx:698,  cy:480, w:263, h:250, r:-4, m:{cx:191,cy:458,w:125,h:118,r:-4}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/dfipic.jpg?raw=true", caption:"Presenting Clique in a jury", cx:937,  cy:438, w:266, h:248, r:3, m:{cx:311,cy:394,w:128,h:115,r:13}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/lypic.jpeg?raw=true", caption:"Conducting a workshop while interning @LY", cx:580,  cy:638, w:248, h:289, r:-7, m:{cx:306,cy:505,w:159,h:154,r:11}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/roompic.jpeg?raw=true", caption:"Late night group projects;)", cx:1187, cy:496, w:264, h:240, r:13, m:{cx:151,cy:583,w:142,h:160,r:-7}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/hdpic.jpg?raw=true", caption:"With our project mentor from HDFC", cx:957,  cy:648, w:261, h:269, r:8, m:{cx:234,cy:563,w:130,h:134,r:8}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/sdipic.png?raw=true", caption:"Experience staging", cx:738,  cy:673, w:230, h:216, r:0, m:{cx:208,cy:616,w:115,h:108,r:0}},
-    {src:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/figmapic.jpeg?raw=true", caption:"Prototyping antics", cx:1191, cy:686, w:241, h:291, r:21, m:{cx:311,cy:616,w:127,h:148,r:21}}
+    {src:"kgpic.jpeg", caption:"Participatory Research activities @Kala Ghoda", cx:469,  cy:499, w:353, h:330, r:-13, m:{cx:103,cy:512,w:175,h:163,r:-13}},
+    {src:"repairpic.jpeg", caption:"Wall full of our research activities", cx:366,  cy:668, w:263, h:318, r:-12, m:{cx:81,cy:610,w:118,h:152,r:-12}},
+    {src:"khgpic.jpeg", caption:"Conducting interviews for Khaki Heritage Foundation", cx:698,  cy:480, w:263, h:250, r:-4, m:{cx:191,cy:458,w:125,h:118,r:-4}},
+    {src:"dfipic.jpg", caption:"Presenting Clique in a jury", cx:937,  cy:438, w:266, h:248, r:3, m:{cx:311,cy:394,w:128,h:115,r:13}},
+    {src:"lypic.jpeg", caption:"Conducting a workshop while interning @LY", cx:580,  cy:638, w:248, h:289, r:-7, m:{cx:306,cy:505,w:159,h:154,r:11}},
+    {src:"roompic.jpeg", caption:"Late night group projects;)", cx:1187, cy:496, w:264, h:240, r:13, m:{cx:151,cy:583,w:142,h:160,r:-7}},
+    {src:"hdpic.jpg", caption:"With our project mentor from HDFC", cx:957,  cy:648, w:261, h:269, r:8, m:{cx:234,cy:563,w:130,h:134,r:8}},
+    {src:"sdipic.png", caption:"Experience staging", cx:738,  cy:673, w:230, h:216, r:0, m:{cx:208,cy:616,w:115,h:108,r:0}},
+    {src:"figmapic.jpeg", caption:"Prototyping antics", cx:1191, cy:686, w:241, h:291, r:21, m:{cx:311,cy:616,w:127,h:148,r:21}}
   ]
 };
 /* ===== WORK SECTION DATA — add your links here ===== */
 const WORK = {
   dx: [   // Digital Experiences (img = image link, link = project page, "" to skip)
-    {title:"Exploring trust in Digital Banking with HDFC", date:"/ May 2026", img:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/hdfccover.png?raw=true", imgM:"", link:"#project/hdfc"},
-    {title:"Clique - Designing for Behavioral Influence",  date:"/ Sep 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/e940a00b8ad03ce6fcebc62ad2ff1c052acb632f/cliquecover.svg", imgM:"https://github.com/tanaya-kulkarni/Portfolio/blob/main/cliquemobile.png?raw=true", link:""},
+    {title:"Exploring trust in Digital Banking with HDFC", date:"/ May 2026", img:"hdfccover.png", imgM:"", link:"#project/hdfc"},
+    {title:"Clique - Designing for Behavioral Influence",  date:"/ Sep 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/e940a00b8ad03ce6fcebc62ad2ff1c052acb632f/cliquecover.svg", imgM:"cliquemobile.png", link:""},
     {title:"Moveit - UX Design for Relocation Journeys",   date:"/ Feb 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/3a8aa058891338da4049fbc0f602a17bba2a4a4c/moveitcover.svg", link:""},
     {title:"Foodin - Service Design in Food Courts",       date:"/ Apr 2026", img:"https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/d3f129735ef972ffc1294b37c5043fee378a0212/foodincover.svg", link:""}
   ],
