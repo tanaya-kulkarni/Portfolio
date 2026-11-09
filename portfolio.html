@@ -229,11 +229,11 @@ html.proj-open .pj{display:block}
 .pj-s img{position:absolute;inset:0;width:100%;height:100%}
 .pj-3{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
 .pj-cap{font-size:15px;color:var(--nav-color);margin:12px 0 !important}
-.pj-hmw{background:var(--hero-bg);border-radius:12px;padding:28px 56px;font-size:24px; color:var(--ul-color);font-weight:600;text-align:center;margin-top:28px}
+.pj-hmw{background:var(--hero-bg);border-radius:12px;padding:32px 56px;font-size:26px; color:var(--ul-color);font-weight:600;text-align:center;margin-top:56px}
 .pj-hmw2{background:#fff;border:1.5px solid var(--ul-color);border-radius:12px;padding:22px 40px;font-size:20px;font-weight:500;margin-top:24px}
 .pj-hmw2 mark,.pj-hmw mark{background:var(--tab-bg);padding:0 6px;border-radius:4px}
 .pj-imp{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:18px}
-.pj-imp b{display:block;font-size:40px;line-height:1;font-weight:500;color:var(--ul-color);margin-bottom:8px}
+.pj-num{display:block;height:44px;width:auto;margin-bottom:8px}
 .pj-imp p{font-size:15px;line-height:1.4}
 .pj-card2{border:1.5px solid var(--ul-color);border-radius:14px;padding:28px 32px 32px;margin-top:20px;position:relative}
 .pj-card2 header{display:flex;justify-content:space-between;font-size:22px;font-weight:500;margin-bottom:22px}
@@ -319,7 +319,7 @@ html.proj-open .pj{display:block}
 <section id="p-ov" class="pj-sec"><h3 class="pj-l">OVERVIEW</h3>
 <div class="pj-two"><div><p style="font-weight:500;font-size:24px">HDFC Bank is one of India’s leading private sector banks, serving millions of customers through a wide range of financial products and services.</p><p style="font-weight:400;font-size:22px">As banking increasingly moves online, HDFC has been expanding its digital banking experience, making more services available through its mobile app and online channels. The aim is to make<strong> everyday banking more convenient, accessible and seamless.</strong></p></div>
 <img src="hdfcintro.jpg" alt="" style="width:350px;flex:none;align-self:stretch;object-fit:cover;border-radius:8px"></div>
-<p style="font-weight:500;font-size:22px;margin-top:56px">But availability does not necessarily translate to confidence.</p>
+<p style="font-weight:500;font-size:22px;margin-top:72px">But availability does not necessarily translate to confidence.</p>
 <div class="pj-3">
 <img src="review1.png" alt="User review 1" style="width:100%;height:245px;object-fit:cover;border-radius:12px;border:1px solid var(--nav-color)">
 <img src="review2.png" alt="User review 2" style="width:100%;height:245px;object-fit:cover;border-radius:12px;border:1px solid var(--nav-color)">
@@ -332,8 +332,13 @@ html.proj-open .pj{display:block}
 <section id="p-inv" class="pj-sec"><h3 class="pj-l">INVESTIGATION</h3>
 <p style="font-weight:400;font-size:22px;margin-top:22px">Independence in banking can mean different things to different people. Our initial research aim was to find out the factors that created dependency on others for financial tasks.</p>
 <img src="https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/bd80bffc3acf4e75f60558393df2fc3ddd772bb3/dependency.svg" alt="Dependency diagram: research questions" style="display:block;width:90%;height:auto;margin-top:40px">
-<p style="font-weight:500;font-size:22px;margin-top:36px">Along with the above questions, we also framed some hypotheses to guide our research.</p>
-<div class="pj-imp"><div><b>1</b><p>The intangibility of digital money reduces users’ sense of control compared to physical cash.</p></div><div><b>2</b><p>Age naturally affects comfortable usage of digital financial platforms.</p></div><div><b>3</b><p>Knowledge of eligible services may not be enough to translate into usage.</p></div><div><b>4</b><p>Perceived sense of support while transacting can make or break users’ confidence.</p></div></div>
+<p style="font-weight:500;font-size:22px;margin-top:48px">Along with the above questions, we also framed some hypotheses to guide our research.</p>
+<div class="pj-imp">
+<div><img class="pj-num" src="num1.svg" alt="1"><p>The intangibility of digital money reduces users’ sense of control compared to physical cash.</p></div>
+<div><img class="pj-num" src="num2.svg" alt="2"><p>Age naturally affects comfortable usage of digital financial platforms.</p></div>
+<div><img class="pj-num" src="num3.svg" alt="3"><p>Knowledge of eligible services may not be enough to translate into usage.</p></div>
+<div><img class="pj-num" src="num4.svg" alt="4"><p>Perceived sense of support while transacting can make or break users’ confidence.</p></div>
+</div>
 <p style="margin-top:40px">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
 <div class="pj-card2" id="pj-survey"><header><span><b>01</b>Quantitative Survey Findings</span><em>80 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div>
 <div class="pj-card2" id="pj-interview"><header><span><b>02</b>Qualitative Interview Findings</span><em>17 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div></section>
@@ -351,13 +356,22 @@ html.proj-open .pj{display:block}
 <div class="pj-per"><figure><div class="pj-s" data-slot="ya" data-ph="Persona illustration · 245×343" style="width:245px;height:343px"></div>ROHAN, 23</figure><div class="pj-bub">I frequently use digital financial tools for daily tasks, but lack confidence when making complex financial decisions independently.</div></div>
 <div class="pj-panel" id="pj-ya"></div><button class="pj-next" data-next="ya">Next Concept →</button>
 <h3 style="font-size:22px;font-weight:500;margin-top:36px">How does this impact Rohan?</h3>
-<div class="pj-imp"><div><b>1</b><p>Increased financial awareness, both through knowledge of terms and upcoming services that could be relevant to him.</p></div><div><b>2</b><p>Planning for the future becomes a default, with small steps everyday contributing to personal goals. Visible progress builds consistency.</p></div><div><b>3</b><p>Asking for help is low-effort and conversational. He feels informed as well supported by a community of peers.</p></div><div><b>4</b><p>He can now approach larger decisions like travel, investments, higher studies with more clarity.</p></div></div></section>
-
+<div class="pj-imp">
+<div><img class="pj-num" src="num1.svg" alt="1"><p>Increased financial awareness, both through knowledge of terms and upcoming services that could be relevant to him.</p></div>
+<div><img class="pj-num" src="num2.svg" alt="2"><p>Planning for the future becomes a default, with small steps everyday contributing to personal goals. Visible progress builds consistency.</p></div>
+<div><img class="pj-num" src="num3.svg" alt="3"><p>Asking for help is low-effort and conversational. He feels informed as well supported by a community of peers.</p></div>
+<div><img class="pj-num" src="num4.svg" alt="4"><p>He can now approach larger decisions like travel, investments, higher studies with more clarity.</p></div>
+</div></section>
 <section id="p-se" style="margin-top:72px"><h3 class="pj-l">02 SENIORS</h3>
 <div class="pj-per"><figure><div class="pj-s" data-slot="se" data-ph="Persona illustration · 245×343" style="width:245px;height:343px"></div>MEENA, 64</figure><div class="pj-bub">I often fully delegate financial tasks to trusted people, with the absence of guided and gradual learning pathways limiting my transition toward independence.</div></div>
 <div class="pj-panel" id="pj-se"></div><button class="pj-next" data-next="se">Next Concept →</button>
 <h3 style="font-size:22px;font-weight:500;margin-top:36px">How does this impact Meena?</h3>
-<div class="pj-imp"><div><b>1</b><p>Understanding of digital finance and therefore usage increases. Daily tasks become comfortable with practice</p></div><div><b>2</b><p>Recovery routes seem visible and accessible, increasing confidence to perform transactions</p></div><div><b>3</b><p>Repeated transactions help build familiarity and lessen dependence on helpers or in-app guidance.</p></div><div><b>4</b><p>She can now approach new services she once avoided, due to lack of confidence or knowledge.</p></div></div></section>
+<div class="pj-imp">
+<div><img class="pj-num" src="num1.svg" alt="1"><p>Understanding of digital finance and therefore usage increases. Daily tasks become comfortable with practice</p></div>
+<div><img class="pj-num" src="num2.svg" alt="2"><p>Recovery routes seem visible and accessible, increasing confidence to perform transactions</p></div>
+<div><img class="pj-num" src="num3.svg" alt="3"><p>Repeated transactions help build familiarity and lessen dependence on helpers or in-app guidance.</p></div>
+<div><img class="pj-num" src="num4.svg" alt="4"><p>She can now approach new services she once avoided, due to lack of confidence or knowledge.</p></div>
+</div></section>
 
 <section id="p-ref" class="pj-sec"><h3 class="pj-l">REFLECTIONS</h3>
 <div class="pj-ref"><p>Exploring a vast sector like banking made me realise how complex user journeys can be, and how differently people experience the same service. Even within the same age group, needs, behaviours and levels of confidence varied. Making sense of these differences and deciding where to narrow our focus was one of the biggest challenges of the project.</p></div>
