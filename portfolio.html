@@ -241,11 +241,13 @@ html.proj-open .pj{display:block}
 .pj-card2 header b{font-size:22px;margin-right:12px}
 .pj-fr{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
 .pj-fb{height:248px;perspective:800px}
-.pj-fi>div{position:absolute;inset:0;backface-visibility:hidden;padding:16px;font-size:14px;line-height:1.4;overflow:auto;background:var(--hero-bg)}
+.pj-fi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s var(--d,0ms)}
 .flip .pj-fi{transform:rotateY(180deg)}
-.pj-fi>div{position:absolute;inset:0;backface-visibility:hidden;padding:14px;font-size:14px;line-height:1.35;overflow:auto;background:var(--hero-bg)}
-.pj-fi .fk{transform:rotateY(180deg);background:var(--tab-bg)}.fk small{display:block;font-weight:500;margin-bottom:4px}
-.pj-btn{display:block;margin:34px 0 0 auto;width:300px;height:35px;border:0;background:var(--ul-color);color:#fff;border-radius:10px;font:inherit;font-size:20px;cursor:pointer;transition:filter .2s}
+.pj-fi>div{position:absolute;inset:0;backface-visibility:hidden;padding:16px;font-size:14px;line-height:1.4;overflow:auto;background:var(--hero-bg)}
+.pj-fi .fk{transform:rotateY(180deg);background:var(--tab-bg)}
+.pj-fi ul{margin:2px 0 0;padding-left:22px}
+.fk small{display:none}
+.pj-btn{display:block;width:fit-content;height:35px;margin:34px 0 0 auto;padding:0 20px;border:0;background:var(--ul-color);color:#fff;border-radius:10px;font:inherit;font-size:20px;cursor:pointer;transition:filter .2s}
 .pj-btn:hover{filter:brightness(.9)}
 .pj-t{opacity:.45;font-style:italic}
 .pj-opp{display:grid;grid-template-columns:repeat(3,305px);gap:41px;margin:24px 0 0 0}
@@ -339,7 +341,7 @@ html.proj-open .pj{display:block}
 <div><img class="pj-num" src="num3.svg" alt="3"><p>Knowledge of eligible services may not be enough to translate into usage.</p></div>
 <div><img class="pj-num" src="num4.svg" alt="4"><p>Perceived sense of support while transacting can make or break users’ confidence.</p></div>
 </div>
-<p style="font-size:24px;font-weight:500px;margin-top:40px;margin-bottom:32px">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
+<p style="font-size:24px;font-weight:500;margin-top:40px;margin-bottom:32px">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
 <div class="pj-card2" id="pj-survey"><header><span><b>01</b>Quantitative Survey Findings</span><em>80 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div>
 <div class="pj-card2" id="pj-interview"><header><span><b>02</b>Qualitative Interview Findings</span><em>17 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div></section>
 
