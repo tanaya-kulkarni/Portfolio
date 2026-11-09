@@ -235,17 +235,17 @@ html.proj-open .pj{display:block}
 .pj-imp{display:grid;grid-template-columns:repeat(4,1fr);gap:44px;margin-top:56px}
 .pj-num{display:block;height:44px;width:auto;margin-bottom:8px}
 .pj-imp p{font-size:20px;font-weight:400;line-height:1.4}
-.pj-card2{background:url("findingbox.svg") center/100% 100% no-repeat;border:0;padding:34px 38px;min-height:364px;margin-top:20px;position:relative;padding:28px 32px 32px;margin-top:20px;position:relative}
+.pj-card2{background:url("findingbox.svg") center/100% 100% no-repeat;border:0;padding:24px 32px 55px;margin-top:20px;position:relative}
 .pj-card2 header{display:flex;justify-content:space-between;font-size:22px;font-weight:500;margin-bottom:22px}
 .pj-card2 header em{font-style:normal;font-size:22px;font-weight:500}
 .pj-card2 header b{font-size:22px;margin-right:12px}
 .pj-fr{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
-.pj-fb{height:167px;perspective:800px}
-.pj-fi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s var(--d,0ms)}
+.pj-fb{height:248px;perspective:800px}
+.pj-fi>div{position:absolute;inset:0;backface-visibility:hidden;padding:16px;font-size:14px;line-height:1.4;overflow:auto;background:var(--hero-bg)}
 .flip .pj-fi{transform:rotateY(180deg)}
 .pj-fi>div{position:absolute;inset:0;backface-visibility:hidden;padding:14px;font-size:14px;line-height:1.35;overflow:auto;background:var(--hero-bg)}
 .pj-fi .fk{transform:rotateY(180deg);background:var(--tab-bg)}.fk small{display:block;font-weight:500;margin-bottom:4px}
-.pj-btn{display:block;margin:32px 0 0 auto;border:0;background:var(--ul-color);color:#fff;border-radius:10px;font:inherit;font-size:16px;padding:7px 16px;cursor:pointer;transition:filter .2s}
+.pj-btn{display:block;margin:34px 0 0 auto;width:300px;height:35px;border:0;background:var(--ul-color);color:#fff;border-radius:10px;font:inherit;font-size:20px;cursor:pointer;transition:filter .2s}
 .pj-btn:hover{filter:brightness(.9)}
 .pj-t{opacity:.45;font-style:italic}
 .pj-opp{display:grid;grid-template-columns:repeat(3,305px);gap:41px;margin:24px 0 0 0}
@@ -633,7 +633,8 @@ const L1 = () => [E(581,100,120,148),E(583,260,118,178),E(715,40,123,178),E(448,
 const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
 const HDFC = {
   assets:{hero:"",overview:"",rev1:"",rev2:"",rev3:"",mindmap:"",ya:"",se:""},
-  survey:   [{f:"Across almost all user levels—but especially for those who feel they are dependent or assisted—the fear of making mistakes is the primary reason for hesitating to use digital tools",q:"Which of the following best describes you?i can do most digital transactions myself, but need assistance with high payments. I can do most digital banking tasks on my own, including large transactions and fixing issues if something goes wrong. I usually need help to do digital payments or banking tasks."},{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""}],   // f = finding text (front), q = question (back)
+  survey:   [{f:"Across almost all user levels—but especially for those who feel they are dependent or assisted—the “fear of making mistakes” is the primary reason for hesitating to use digital tools",
+ q:"Which of the following best describes you?<ul><li>I can do most digital transactions myself, but need assistance with high payments</li><li>I can do most digital banking tasks on my own, including large transactions and fixing issues if something goes wrong.</li><li>I usually need help to do digital payments or banking tasks.</li></ul>"},{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""}],   // f = finding text (front), q = question (back)
   interview:[{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""},{f:"",q:""}],
   opp:[{ctx:"",mot:"",barrier:""},{ctx:"",mot:""},{ctx:"",mot:"",barrier:""}], // 21-30, 31-60, 60+  (no barrier box on 31-60)
   concepts:{
