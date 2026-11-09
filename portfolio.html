@@ -251,8 +251,12 @@ html.proj-open .pj{display:block}
 .pj-btn:hover{filter:brightness(.9)}
 .pj-t{opacity:.45;font-style:italic}
 .pj-opp{display:grid;grid-template-columns:repeat(3,305px);gap:41px;margin:24px 0 0 0}
-.pj-card{border:1.5px solid var(--ul-color);border-radius:14px;height:360px;padding:20px 24px;font-size:15px;line-height:1.4}
-.pj-card h5{margin:0 0 18px;text-align:center;font-size:28px;font-weight:500}
+.pj-card {border:0;border-radius:0;height:360px;padding:20px 24px;font-size:15px;line-height:1.4;position:relative;}
+/* 21–30 and 60+ */
+.pj-card.age-box-outer {background: url("agebox1.svg") center/100% 100% no-repeat;}
+/* 30–60 */
+.pj-card.age-box-middle {background: url("agebox2.svg") center/100% 100% no-repeat;}
+.pj-card h5 {margin: 0 0 18px;text-align:center;font-size:28px;font-weight:500;}
 .pj-k{display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.05em;margin:0 0 6px !important;color:var(--nav-color)}
 .pj-k i{width:8px;height:8px;border-radius:50%;background:var(--ul-color)}
 .pj-card>div{margin-bottom:20px}
@@ -679,7 +683,7 @@ document.querySelectorAll('#p-hdfc [data-slot]').forEach(el => {
 
 /* opportunity cards */
 $('#pj-opp').innerHTML = ['21-30','31-60','60+'].map((a,i) => { const o = HDFC.opp[i];
-  return `<div><div class="pj-card"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div></div>` +
+  return `<div><div class="pj-card ${i === 1 ? 'age-box-middle' : 'age-box-outer'}"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div></div>` +
   (o.barrier !== undefined ? `<h5 class="pj-bt">Biggest Barrier</h5><div class="pj-box">${T(o.barrier,'Add text')}</div>` : '') + `</div>`; }).join('');
 
 /* concepts */
