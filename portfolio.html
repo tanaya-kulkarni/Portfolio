@@ -248,7 +248,7 @@ html.proj-open .pj{display:block}
 .pj-back{transform:rotateY(180deg);font-size:24px;font-weight:400;line-height:1.2}
 .pj-t{opacity:.45;font-style:italic}
 .pj-opp{display:grid;grid-template-columns:repeat(3,305px);gap:41px;margin:24px 0 0 0}
-.pj-card {border:0;border-radius:0;height:360px;padding:20px 24px;font-size:15px;line-height:1.4;position:relative;}
+.pj-card {border:0;border-radius:0;height:480px;padding:24px 24px;font-size:15px;line-height:1.4;position:relative;}
 /* 21–30 and 60+ */
 .pj-card.age-box-outer {background: url("agebox1.svg") center/100% 100% no-repeat;}
 /* 30–60 */
@@ -333,13 +333,13 @@ html.proj-open .pj{display:block}
 <div class="pj-hmw">So, what stands between having access to digital banking and using it with confidence?</div></section>
 
 <section id="p-inv" class="pj-sec"><h3 class="pj-l">INVESTIGATION</h3>
-<p style="font-weight:400;font-size:22px;margin-top:22px">We began by exploring why some users rely on others to carry out financial tasks digitally, and what influences their confidence in managing these tasks independently.</p><p>We wanted to understand the role of digital familiarity, financial knowledge, perceived risk and access to support in shaping these experiences.</p>
+<p style="font-weight:400;font-size:22px;margin-top:22px">Independence in banking can mean different things to different people. Our initial research aim was to find out the factors that created dependency on others for financial tasks.</p><p style="font-weight:400;font-size:22px">We wanted to understand the role of digital familiarity, financial knowledge, perceived risk and access to support in shaping these experiences.</p>
 <img src="https://raw.githubusercontent.com/tanaya-kulkarni/Portfolio/bd80bffc3acf4e75f60558393df2fc3ddd772bb3/dependency.svg" alt="Dependency diagram: research questions" style="display:block;width:80%;height:auto;margin-top:64px;margin-left:32px">
 <p style="font-weight:400;font-size:22px;margin-top:72px">Along with the above questions, we also framed some <strong>initial hypotheses</strong> to guide our research.</p>
 <div class="pj-imp">
-<div><img class="pj-num" src="num1.svg" alt="1"><p>Digital money can feel less tangible than physical cash, potentially affecting users' sense of control.</p></div>
+<div><img class="pj-num" src="num1.svg" alt="1"><p>The intangibility of digital money reduces users’ sense of control compared to physical cash.</p></div>
 <div><img class="pj-num" src="num2.svg" alt="2"><p>Age may influence how comfortable users feel navigating digital financial platforms.</p></div>
-<div><img class="pj-num" src="num3.svg" alt="3"><p>Knowing that a financial service exists doesn't necessarily translate into using it..</p></div>
+<div><img class="pj-num" src="num3.svg" alt="3"><p>Knowledge of eligible services may not be enough to translate into usage.</p></div>
 <div><img class="pj-num" src="num4.svg" alt="4"><p>Perceived sense of support while transacting can make or break users’ confidence.</p></div>
 </div>
 <p style="font-size:24px;font-weight:500;margin-top:80px;margin-bottom:0">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
@@ -348,10 +348,11 @@ html.proj-open .pj{display:block}
 </section>
   
 <section id="p-opp" class="pj-sec"><h3 class="pj-l">OPPORTUNITY</h3>
-<p>Our research helped us identify age-specific behaviours, challenges and motivations around independent digital banking. To narrow our focus, we decided to explore two ends of the age spectrum: young adults aged 21–30 and seniors 60+.</p>
+<p>Through our research, we were also able to establish age-specific insights. Here we were able to identify that the middle aged group(31-60) was considerably more adapted to digital banking, owing to financial freedom and self initiation into digital ecosystems.</p>
+<p>The young adults(21-30) and seniors(60+), however presented two distinct challenges.</p>
 <div class="pj-opp" id="pj-opp"></div>
 <div class="pj-hmw2">How might we design a banking system that helps <mark>young adults</mark> confidently progress from routine transactions to more complex financial decisions, so that they can build long-term financial independence and make informed choices on their own?</div>
-<div class="pj-hmw2">How might we design a banking system that builds trust and reduces fear for <mark>older adults</mark> so that they can gradually move from dependence on others toward confident and independent use of financial services?</div></section>
+<div class="pj-hmw2">How might we design a banking system that helps <mark>seniors</mark> build confidence in navigating digital banking services, so that they can gradually understand, manage and carry out financial tasks independently?</div></section>
 
 <section id="p-con" class="pj-sec"><h3 class="pj-l">CONCEPTS</h3>
 <p>Based on our opportunity statements, we developed feature concepts that could integrate into HDFC’s existing digital banking ecosystem. Each concept responds to specific insights from the two age groups, while considering the current capabilities of digital banking, emerging developments and possibilities for the future.</p></section>
@@ -662,13 +663,13 @@ document.querySelectorAll('#p-hdfc [data-slot]').forEach(el => {
 });
 const FINDINGS = [
  {n:"01", t:"Confidence remains task-specific, rather than progressing with use.",
-  e:"Users who called themselves independent still preferred to route risky tasks through a person."},
+  e:"Users can regularly carry out routine transactions digitally, but hesitate when faced with unfamiliar or high stakes services."},
  {n:"02", t:"Fear of making mistakes creates dependency.",
-  e:"Across almost all user levels, the “fear of making mistakes” was the main reason for hesitating to use digital tools."},
+  e:"The perceived lack of support and visible recovery mechanisms deter users from exploring new features."},
  {n:"03", t:"Trust is often built through people, rather than individual experience.",
-  e:"Family influence, stories of fraud and friends adopting a service all shaped trust. For seniors, it came from relationships rather than the technology."},
+  e:"Family, friends and familiar sources of support largely influence the choice of bank, services used as well as trust in digital banking as a whole."},
  {n:"04", t:"Physical fallbacks remain strong to support gaps in digital processes.",
-  e:"Users who knew the app still sought help for high amounts or “edge cases”, falling back on physical methods or trusted people."}
+  e:"Independence in banking does not directly relate to a fully digital journey. Human touchpoints are preferred and deemed necessary by majority of users."}
 ];
 $('#pj-find').innerHTML = FINDINGS.map(f =>
   `<div class="pj-fc" tabindex="0"><div class="pj-fci"><div class="pj-front">${f.n} ${f.t}</div><div class="pj-back">${T(f.e,'Evidence text')}</div></div></div>`).join('');
