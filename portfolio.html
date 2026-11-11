@@ -232,23 +232,20 @@ html.proj-open .pj{display:block}
 .pj-hmw{background:var(--hero-bg);border-radius:12px;padding:32px 56px;font-size:26px; color:var(--ul-color);font-weight:600;text-align:center;margin-top:56px}
 .pj-hmw2{background:#fff;border:1.5px solid var(--ul-color);border-radius:12px;padding:22px 40px;font-size:20px;font-weight:500;margin-top:24px}
 .pj-hmw2 mark,.pj-hmw mark{background:var(--tab-bg);padding:0 6px;border-radius:4px}
-.pj-imp{display:grid;grid-template-columns:repeat(4,1fr);gap:44px;margin-top:56px}
-.pj-num{display:block;height:44px;width:auto;margin-bottom:8px}
-.pj-imp p{font-size:20px;font-weight:400;line-height:1.4}
-.pj-card2{background:url("findingbox.svg") center/100% 100% no-repeat;border:0;padding:24px 32px 55px;margin-top:20px;position:relative}
-.pj-card2 header{display:flex;justify-content:space-between;font-size:22px;font-weight:500;margin-bottom:22px;margin-top:24px}
-.pj-card2 header em{font-style:normal;font-size:22px;font-weight:500}
-.pj-card2 header b{font-size:22px;margin-right:12px}
-.pj-fr{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
-.pj-fb{height:248px;perspective:800px}
-.pj-fi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s var(--d,0ms)}
-.flip .pj-fi{transform:rotateY(180deg)}
-.pj-fi>div{position:absolute;inset:0;backface-visibility:hidden;padding:16px;font-size:14px;line-height:1.4;overflow:auto;background:var(--hero-bg)}
-.pj-fi .fk{transform:rotateY(180deg);background:var(--tab-bg)}
-.pj-fi ul{margin:2px 0 0;padding-left:22px}
-.fk small{display:none}
-.pj-btn{display:block;width:fit-content;height:35px;margin:34px 0 0 auto;padding:0 20px;border:0;background:var(--ul-color);color:#fff;border-radius:10px;font:inherit;font-size:20px;cursor:pointer;transition:filter .2s}
-.pj-btn:hover{filter:brightness(.9)}
+.pj-imp{display:flex;justify-content:space-between;margin-top:56px}
+.pj-imp>div{display:flex;gap:16px;align-items:flex-start}
+.pj-num{flex:none;height:36px;width:auto;margin:0}
+.pj-imp p{width:165px;margin:0;font-size:20px;font-weight:400;line-height:1.4}
+.pj h3.pj-wl{margin:50px 0 48px;text-align:center;font-size:22px;font-weight:500}
+.pj-fgrid{display:grid;grid-template-columns:repeat(2,365px);justify-content:center;gap:28px 37px;margin-bottom:52px}
+.pj-fc{height:286px;perspective:900px;outline:none;cursor:default}
+.pj-fci{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s}
+@media (hover:hover){.pj-fc:hover .pj-fci{transform:rotateY(180deg)}}
+.pj-fc:focus-visible .pj-fci,.pj-fc.flip .pj-fci{transform:rotateY(180deg)}
+.pj-front,.pj-back{position:absolute;inset:0;padding:30px 40px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:url("findingbox.svg") center/100% 100% no-repeat;overflow:auto}
+.pj-front{font-size:28px;font-weight:500;line-height:1.2}
+.pj-back{transform:rotateY(180deg);font-size:24px;font-weight:400;line-height:1.2}
 .pj-t{opacity:.45;font-style:italic}
 .pj-opp{display:grid;grid-template-columns:repeat(3,305px);gap:41px;margin:24px 0 0 0}
 .pj-card {border:0;border-radius:0;height:360px;padding:20px 24px;font-size:15px;line-height:1.4;position:relative;}
@@ -345,10 +342,10 @@ html.proj-open .pj{display:block}
 <div><img class="pj-num" src="num3.svg" alt="3"><p>Knowing that a financial service exists doesn't necessarily translate into using it..</p></div>
 <div><img class="pj-num" src="num4.svg" alt="4"><p>Perceived sense of support while transacting can make or break users’ confidence.</p></div>
 </div>
-<p style="font-size:24px;font-weight:500;margin-top:80px;margin-bottom:32px">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
-<div class="pj-card2" id="pj-survey"><header><span><b>01</b>Quantitative Survey Findings</span><em>80 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div>
-<div class="pj-card2" id="pj-interview"><header><span><b>02</b>Qualitative Interview Findings</span><em>17 respondents - Across 18-60+ ages</em></header><div class="pj-fr"></div><button class="pj-btn">What questions did we ask?</button></div></section>
-
+<p style="font-size:24px;font-weight:500;margin-top:80px;margin-bottom:0">Our research methodology followed the exploratory route, starting off with a quantitative survey and then digging deeper with qualitative interviews.</p>
+<h3 class="pj-wl">What we learnt</h3>
+<div class="pj-fgrid" id="pj-find"></div>
+  
 <section id="p-opp" class="pj-sec"><h3 class="pj-l">OPPORTUNITY</h3>
 <p>Our research helped us identify age-specific behaviours, challenges and motivations around independent digital banking. To narrow our focus, we decided to explore two ends of the age spectrum: young adults aged 21–30 and seniors 60+.</p>
 <div class="pj-opp" id="pj-opp"></div>
@@ -673,16 +670,21 @@ document.querySelectorAll('#p-hdfc [data-slot]').forEach(el => {
   const u = HDFC.assets[el.dataset.slot];
   if (u) { el.classList.add('f'); el.innerHTML = `<img src="${u}" alt="" loading="lazy">`; } else el.textContent = el.dataset.ph;
 });
-
-/* findings: flip all five boxes together */
-[['survey','pj-survey'],['interview','pj-interview']].forEach(([k,id]) => {
-  const c = $('#'+id);
-  c.querySelector('.pj-fr').innerHTML = HDFC[k].map((x,i) =>
-    `<div class="pj-fb" style="--d:${i*70}ms"><div class="pj-fi"><div>${T(x.f,'Finding text')}</div><div class="fk"><small>Q${i+1}</small>${T(x.q,'Question text')}</div></div></div>`).join('');
-  const b = c.querySelector('button');
-  b.onclick = () => { c.classList.toggle('flip'); b.textContent = c.classList.contains('flip') ? 'Back to findings' : 'What questions did we ask?'; };
-});
-
+const FINDINGS = [
+ {n:"01", t:"Confidence remains task-specific, rather than progressing with use.",
+  e:"Users who called themselves independent still preferred to route risky tasks through a person."},
+ {n:"02", t:"Fear of making mistakes creates dependency.",
+  e:"Across almost all user levels, the “fear of making mistakes” was the main reason for hesitating to use digital tools."},
+ {n:"03", t:"Trust is often built through people, rather than individual experience.",
+  e:"Family influence, stories of fraud and friends adopting a service all shaped trust. For seniors, it came from relationships rather than the technology."},
+ {n:"04", t:"Physical fallbacks remain strong to support gaps in digital processes.",
+  e:"Users who knew the app still sought help for high amounts or “edge cases”, falling back on physical methods or trusted people."}
+];
+$('#pj-find').innerHTML = FINDINGS.map(f =>
+  `<div class="pj-fc" tabindex="0"><div class="pj-fci"><div class="pj-front">${f.n} ${f.t}</div><div class="pj-back">${T(f.e,'Evidence text')}</div></div></div>`).join('');
+document.querySelectorAll('.pj-fc').forEach(c => c.addEventListener('click', () => {
+  if (matchMedia('(hover:none)').matches) c.classList.toggle('flip');   // tap to flip on phones
+}));
 /* opportunity cards */
 $('#pj-opp').innerHTML = ['21-30','31-60','60+'].map((a,i) => { const o = HDFC.opp[i];
   return `<div><div class="pj-card ${i === 1 ? 'age-box-middle' : 'age-box-outer'}"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div></div>` +
