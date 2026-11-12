@@ -248,15 +248,14 @@ html.proj-open .pj{display:block}
 .pj-back{transform:rotateY(180deg);font-size:24px;font-weight:400;line-height:1.2}
 .pj-t{opacity:.45;font-style:italic}
 .pj-opp{display:grid;grid-template-columns:repeat(3,305px);gap:41px;margin:24px 0 0 0}
-.pj-card {border:0;border-radius:0;height:480px;padding:24px 24px;font-size:18px;font-weight:400;line-height:1.4;position:relative;}
-/* 21–30 and 60+ */
-.pj-card.age-box-outer {background: url("agebox1.svg") center/100% 100% no-repeat;}
-/* 30–60 */
-.pj-card.age-box-middle {background: url("agebox2.svg") center/100% 100% no-repeat;}
-.pj-card h5 {margin: 0 0 18px;text-align:center;font-size:28px;font-weight:500;line-height:1.5;}
-.pj-k{display:flex;align-items:flex-start;gap:8px;font-size:18px;letter-spacing:.05em;margin:0 0 12px;margin-left:-4px;max-width:228px;color:var(--nav-color)}
-.pj-k i{width:8px;height:8px;border-radius:50%;background:var(--ul-color)}
-.pj-card>div{margin-bottom:28px}
+.pj-card{border:0;border-radius:0;height:480px;position:relative;padding:24px 30px 24px 24px;font-size:18px;font-weight:400;line-height:1.2;color:#000;}
+.pj-card.age-box-outer{background:url("agebox1.svg") center/100% 100% no-repeat}
+.pj-card.age-box-middle{background:url("agebox2.svg") center/100% 100% no-repeat}
+.pj-card h5{margin:0 0 20px;text-align:center;font-size:28px;font-weight:500;line-height:28px}
+.pj .pj-k{display:flex;align-items:flex-start;gap:4px;margin:0 0 12px -4px;max-width:228px;font-size:18px;font-weight:400;line-height:20px;letter-spacing:0;color:var(--nav-color);}
+.pj-k i{flex:none;width:8px;height:8px;margin-top:6px;border-radius:50%;background:var(--ul-color)}
+.pj-card>div{margin-bottom:27px}
+.pj-card>div:first-of-type{min-height:126px}   /* keeps the second label level in all three cards */
 .pj-bt{margin:22px 0 10px;font-size:22px;font-weight:500}
 .pj-box{background:var(--hero-bg);border-radius:12px;padding:12px 16px;min-height:75px}
 .pj-box strong{display:block;font-size:24px;font-weight:500;line-height:28px;color:var(--ul-color);margin-bottom:4px;}
@@ -640,7 +639,7 @@ const L1 = () => [E(581,100,120,148),E(583,260,118,178),E(715,40,123,178),E(448,
 const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
 const HDFC = {
   assets:{hero:"",overview:"",rev1:"",rev2:"",rev3:"",mindmap:"",ya:"",se:""},
-  opp:[{ctx:"Transitioning to individual financial management, with first jobs, moving away from home. Still relying on parents or peers for financial guidance.",mot:"To take up financial responsibilities as an adult, reducing need for reassurance from parents. Privacy and control over personal spending and savings.",barrier:"Financial confidence. A lack of knowledge and experience with complex, long-term services deters them from taking decisions independently."},
+  opp:[{ctx:"Transitioning to individual financial management, with first jobs, moving away from home. Still relying on parents or peers for financial guidance.",mot:"To take up financial responsibilities as an adult, reducing need for reassurance from parents. Privacy and control over personal spending and savings.",barrier:{t:"Financial confidence" s:"A lack of knowledge and experience with complex, long-term services deters them from taking decisions independently."},
        {ctx:"Balancing household finances, children’s education and parent care. Managing multiple services along with a busy schedule.",mot:"To take care of everyone’s needs efficiently and have a well planned financial strategy for future expenses. Responsible for family, rather than individual wellbeing."},
        {ctx:"Transitioning from regular income to retirement savings. Face increasing medical expenses, and often relying on family members for assistance.",mot:"To reduce reliance on others for routine tasks. Have control over their savings and feel secure when carrying out transactions alone",barrier:""}], // 21-30, 31-60, 60+  (no barrier box on 31-60)
   concepts:{
