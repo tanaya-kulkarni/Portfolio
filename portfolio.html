@@ -639,9 +639,16 @@ const L1 = () => [E(581,100,120,148),E(583,260,118,178),E(715,40,123,178),E(448,
 const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
 const HDFC = {
   assets:{hero:"",overview:"",rev1:"",rev2:"",rev3:"",mindmap:"",ya:"",se:""},
-  opp:[{ctx:"Transitioning to individual financial management, with first jobs, moving away from home. Still relying on parents or peers for financial guidance.",mot:"To take up financial responsibilities as an adult, reducing need for reassurance from parents. Privacy and control over personal spending and savings.",barrier:{t:"Financial confidence",s:"A lack of knowledge and experience with complex, long-term services deters them from taking decisions independently."},
-       {ctx:"Balancing household finances, children’s education and parent care. Managing multiple services along with a busy schedule.",mot:"To take care of everyone’s needs efficiently and have a well planned financial strategy for future expenses. Responsible for family, rather than individual wellbeing."},
-       {ctx:"Transitioning from regular income to retirement savings. Face increasing medical expenses, and often relying on family members for assistance.",mot:"To reduce reliance on others for routine tasks. Have control over their savings and feel secure when carrying out transactions alone",barrier:{t:"Digital Confidence",s:""}], // 21-30, 31-60, 60+  (no barrier box on 31-60)
+  opp:[
+    {ctx:"Transitioning to individual financial management, with first jobs, moving away from home. Still relying on parents or peers for financial guidance.",
+     mot:"To take up financial responsibilities as an adult, reducing need for reassurance from parents. Privacy and control over personal spending and savings.",
+     barrier:{t:"Financial confidence", s:"A lack of knowledge and experience with complex, long-term services deters them from taking decisions independently."}},
+    {ctx:"Balancing household finances, children’s education and parent care. Managing multiple services along with a busy schedule.",
+     mot:"To take care of everyone’s needs efficiently and have a well planned financial strategy for future expenses. Responsible for family, rather than individual wellbeing."},
+    {ctx:"Transitioning from regular income to retirement savings. Face increasing medical expenses, and often relying on family members for assistance.",
+     mot:"To reduce reliance on others for routine tasks. Have control over their savings and feel secure when carrying out transactions alone",
+     barrier:{t:"Digital confidence", s:""}}
+  ], // 21-30, 31-60, 60+  (no barrier on 31-60)
   concepts:{
     ya:[
       {title:"CONCEPT 1 - Financial Vision Board", text:"While onboarding to the bank’s platform, users are presented with a short quiz",
