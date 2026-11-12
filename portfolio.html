@@ -362,11 +362,11 @@ html.proj-open .pj{display:block}
 </section>
   
 <section id="p-opp" class="pj-sec"><h3 class="pj-l">OPPORTUNITY</h3>
-<p>Through our research, we were also able to establish age-specific insights. Here we were able to identify that the middle aged group(31-60) was considerably more adapted to digital banking, owing to financial freedom and self initiation into digital ecosystems.</p>
+<p style="font-weight:400;font-size:22px>Through our research, we were also able to establish age-specific insights. Here we were able to identify that the middle aged group(31-60) was considerably more adapted to digital banking, owing to financial freedom and self initiation into digital ecosystems.</p>
 <p>The young adults(21-30) and seniors(60+), however presented two distinct challenges.</p>
 <p style="font-weight:400;font-size:22px;margin-top:48px;margin-bottom:0">These findings led us to narrow our focus to two groups: young adults and seniors. While their needs differed, both groups faced distinct barriers to adopting digital banking independently. Addressing these barriers presented an opportunity to support users at different stages of financial independence, while helping HDFC expand its reach among these customer segments.</p>
 <div class="pj-hmw2" id="pj-h1" style="margin-top:80px"><p>How might we design a banking system that helps <mark>young adults</mark> confidently progress from routine transactions to more complex financial decisions, so that they can build long-term financial independence and make informed choices on their own?</p></div>
-<div class="pj-hmw2" id="pj-h2"><p>How might we design a banking system that helps <mark>seniors</mark> build confidence in navigating digital banking services, so that they can gradually understand, manage and carry out financial tasks independently?</p></div>
+<div class="pj-hmw2" id="pj-h2"><p>How might we design a banking system that helps <mark>seniors</mark> build confidence in navigating digital banking services, so that they can gradually understand, manage and carry out financial tasks independently?</p></div></section>
 <section id="p-con" class="pj-sec"><h3 class="pj-l">CONCEPTS</h3>
 <p>Based on our opportunity statements, we developed feature concepts that could integrate into HDFC’s existing digital banking ecosystem. Each concept responds to specific insights from the two age groups, while considering the current capabilities of digital banking, emerging developments and possibilities for the future.</p></section>
 
@@ -652,7 +652,7 @@ const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
 const OPP_ART = {
   arrowL: "arrowleft.svg",   // curvy arrow under the 21-30 card
   arrowR: "arrowright.svg",   // curvy arrow under the 60+ card
-  q: ["questionmark.svg"]   // question marks: young adults top-left, young adults bottom-right, seniors top, seniors bottom
+  q: "questionmark.svg"   // question marks: young adults top-left, young adults bottom-right, seniors top, seniors bottom
 };
 const art = (src, cls, style) => src ? `<img class="${cls||''}" src="${src}" alt="" style="${style||''}">` : '';
 const HDFC = {
@@ -707,9 +707,7 @@ $('#pj-opp').innerHTML = ['21-30','31-60','60+'].map((a,i) => { const o = HDFC.o
   return `<div><div class="pj-card ${i === 1 ? 'age-box-middle' : 'age-box-outer'}"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div>${o.barrier ? art(side === 'l' ? OPP_ART.arrowL : OPP_ART.arrowR, 'pj-arr ' + side) : ''}</div>` +
   (o.barrier ? `<div class="pj-bar ${side}"><h5 class="pj-bt">Biggest Barrier</h5><div class="pj-box"><strong>${T(o.barrier.t,'Add title')}</strong><span>${T(o.barrier.s,'Add text')}</span></div></div>` : '') + `</div>`; }).join('');
 
-/* question marks around the HMW boxes (positions relative to each box) */
-$('#pj-h1').insertAdjacentHTML('beforeend',
-  /* question marks: same svg, placed by centre point, scale and rotation */
+/* question marks: same svg, placed by centre point, scale and rotation */
 const Q_BASE = {w:44, h:68};     // natural size of the exported svg
 const Q_POS = {                  // x, y = centre inside the HMW box
   h1:[{x:44,  y:16,  s:1,   r:0},
