@@ -639,9 +639,9 @@ const L1 = () => [E(581,100,120,148),E(583,260,118,178),E(715,40,123,178),E(448,
 const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
 const HDFC = {
   assets:{hero:"",overview:"",rev1:"",rev2:"",rev3:"",mindmap:"",ya:"",se:""},
-  opp:[{ctx:"Transitioning to individual financial management, with first jobs, moving away from home. Still relying on parents or peers for financial guidance.",mot:"To take up financial responsibilities as an adult, reducing need for reassurance from parents. Privacy and control over personal spending and savings.",barrier:{t:"Financial confidence" s:"A lack of knowledge and experience with complex, long-term services deters them from taking decisions independently."},
+  opp:[{ctx:"Transitioning to individual financial management, with first jobs, moving away from home. Still relying on parents or peers for financial guidance.",mot:"To take up financial responsibilities as an adult, reducing need for reassurance from parents. Privacy and control over personal spending and savings.",barrier:{t:"Financial confidence",s:"A lack of knowledge and experience with complex, long-term services deters them from taking decisions independently."},
        {ctx:"Balancing household finances, children’s education and parent care. Managing multiple services along with a busy schedule.",mot:"To take care of everyone’s needs efficiently and have a well planned financial strategy for future expenses. Responsible for family, rather than individual wellbeing."},
-       {ctx:"Transitioning from regular income to retirement savings. Face increasing medical expenses, and often relying on family members for assistance.",mot:"To reduce reliance on others for routine tasks. Have control over their savings and feel secure when carrying out transactions alone",barrier:""}], // 21-30, 31-60, 60+  (no barrier box on 31-60)
+       {ctx:"Transitioning from regular income to retirement savings. Face increasing medical expenses, and often relying on family members for assistance.",mot:"To reduce reliance on others for routine tasks. Have control over their savings and feel secure when carrying out transactions alone",barrier:{t:"Digital Confidence",s:""}], // 21-30, 31-60, 60+  (no barrier box on 31-60)
   concepts:{
     ya:[
       {title:"CONCEPT 1 - Financial Vision Board", text:"While onboarding to the bank’s platform, users are presented with a short quiz",
@@ -680,7 +680,7 @@ document.querySelectorAll('.pj-fc').forEach(c => c.addEventListener('click', () 
 /* opportunity cards */
 $('#pj-opp').innerHTML = ['21-30','31-60','60+'].map((a,i) => { const o = HDFC.opp[i];
   return `<div><div class="pj-card ${i === 1 ? 'age-box-middle' : 'age-box-outer'}"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div></div>` +
-  (o.barrier !== undefined ? `<h5 class="pj-bt">Biggest Barrier</h5><div class="pj-box">${T(o.barrier,'Add text')}</div>` : '') + `</div>`; }).join('');
+  (o.barrier ? `<h5 class="pj-bt">Biggest Barrier</h5><div class="pj-box"><strong>${T(o.barrier.t,'Add title')}</strong><span>${T(o.barrier.s,'Add text')}</span></div>` : '') + `</div>`; }).join('');
 
 /* concepts */
 const pj = {ya:{c:0,s:0}, se:{c:0,s:0}}, last = {ya:Date.now(), se:Date.now()};
