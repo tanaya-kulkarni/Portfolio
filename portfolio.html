@@ -230,8 +230,21 @@ html.proj-open .pj{display:block}
 .pj-3{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
 .pj-cap{font-size:15px;color:var(--nav-color);margin:12px 0 !important}
 .pj-hmw{background:var(--hero-bg);border-radius:12px;padding:32px 56px;font-size:26px; color:var(--ul-color);font-weight:600;text-align:center;margin-top:56px}
-.pj-hmw2{background:#fff;border:1.5px solid var(--ul-color);border-radius:12px;padding:22px 40px;font-size:20px;font-weight:500;margin-top:24px}
+.pj-hmw2{position:relative;display:flex;align-items:center;min-height:180px;margin-top:41px;padding:0 88px;
+  background:#fff;border:1.5px solid var(--ul-color);border-radius:12px;font-size:24px;font-weight:500;line-height:1.2}
+.pj-hmw2 p{margin:0}
+.pj-hmw2 img{position:absolute;pointer-events:none;z-index:2}
 .pj-hmw2 mark,.pj-hmw mark{background:var(--tab-bg);padding:0 6px;border-radius:4px}
+.pj-bar{width:274px;margin-top:49px}
+.pj-bar.l{margin-left:31px}
+.pj-bar.r{margin-left:5px;text-align:right}
+.pj-bar .pj-bt{margin:0 0 8px;font-size:22px;font-weight:500;line-height:28px}
+.pj-bar .pj-box{height:102px;min-height:0;padding:13px 12px;text-align:left;background:var(--hero-bg);border-radius:12px}
+
+.pj-arr{position:absolute;top:490px;width:30px;height:52px;pointer-events:none}
+.pj-arr.l{left:-15px}
+.pj-arr.r{right:-50px}
+#p-opp{margin-bottom:60px}
 .pj-imp{display:flex;justify-content:space-between;margin-top:56px}
 .pj-imp>div{display:flex;gap:16px;align-items:flex-start}
 .pj-num{flex:none;height:36px;width:auto;margin:0}
@@ -351,10 +364,9 @@ html.proj-open .pj{display:block}
 <section id="p-opp" class="pj-sec"><h3 class="pj-l">OPPORTUNITY</h3>
 <p>Through our research, we were also able to establish age-specific insights. Here we were able to identify that the middle aged group(31-60) was considerably more adapted to digital banking, owing to financial freedom and self initiation into digital ecosystems.</p>
 <p>The young adults(21-30) and seniors(60+), however presented two distinct challenges.</p>
-<div class="pj-opp" id="pj-opp"></div>
-<div class="pj-hmw2">How might we design a banking system that helps <mark>young adults</mark> confidently progress from routine transactions to more complex financial decisions, so that they can build long-term financial independence and make informed choices on their own?</div>
-<div class="pj-hmw2">How might we design a banking system that helps <mark>seniors</mark> build confidence in navigating digital banking services, so that they can gradually understand, manage and carry out financial tasks independently?</div></section>
-
+<p style="font-weight:400;font-size:22px;margin-top:48px;margin-bottom:0">These findings led us to narrow our focus to two groups: young adults and seniors. While their needs differed, both groups faced distinct barriers to adopting digital banking independently. Addressing these barriers presented an opportunity to support users at different stages of financial independence, while helping HDFC expand its reach among these customer segments.</p>
+<div class="pj-hmw2" id="pj-h1" style="margin-top:80px"><p>How might we design a banking system that helps <mark>young adults</mark> confidently progress from routine transactions to more complex financial decisions, so that they can build long-term financial independence and make informed choices on their own?</p></div>
+<div class="pj-hmw2" id="pj-h2"><p>How might we design a banking system that helps <mark>seniors</mark> build confidence in navigating digital banking services, so that they can gradually understand, manage and carry out financial tasks independently?</p></div>
 <section id="p-con" class="pj-sec"><h3 class="pj-l">CONCEPTS</h3>
 <p>Based on our opportunity statements, we developed feature concepts that could integrate into HDFC’s existing digital banking ecosystem. Each concept responds to specific insights from the two age groups, while considering the current capabilities of digital banking, emerging developments and possibilities for the future.</p></section>
 
@@ -637,6 +649,12 @@ if (location.search.includes('drag')) {
 const E = (x,y,w,h,src="") => ({x,y,w,h,src});          // image box inside the blue panel: E(x, y, width, height, "link")
 const L1 = () => [E(581,100,120,148),E(583,260,118,178),E(715,40,123,178),E(448,260,120,150),E(445,82,125,166),E(313,274,120,178)];
 const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
+const OPP_ART = {
+  arrowL: "arrowleft.svg",   // curvy arrow under the 21-30 card
+  arrowR: "arrowright.svg",   // curvy arrow under the 60+ card
+  q: ["questionmark.svg"]   // question marks: young adults top-left, young adults bottom-right, seniors top, seniors bottom
+};
+const art = (src, cls, style) => src ? `<img class="${cls||''}" src="${src}" alt="" style="${style||''}">` : '';
 const HDFC = {
   assets:{hero:"",overview:"",rev1:"",rev2:"",rev3:"",mindmap:"",ya:"",se:""},
   opp:[
@@ -685,9 +703,24 @@ document.querySelectorAll('.pj-fc').forEach(c => c.addEventListener('click', () 
   if (matchMedia('(hover:none)').matches) c.classList.toggle('flip');   // tap to flip on phones
 }));
 /* opportunity cards */
-$('#pj-opp').innerHTML = ['21-30','31-60','60+'].map((a,i) => { const o = HDFC.opp[i];
-  return `<div><div class="pj-card ${i === 1 ? 'age-box-middle' : 'age-box-outer'}"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div></div>` +
-  (o.barrier ? `<h5 class="pj-bt">Biggest Barrier</h5><div class="pj-box"><strong>${T(o.barrier.t,'Add title')}</strong><span>${T(o.barrier.s,'Add text')}</span></div>` : '') + `</div>`; }).join('');
+$('#pj-opp').innerHTML = ['21-30','31-60','60+'].map((a,i) => { const o = HDFC.opp[i], side = i === 0 ? 'l' : 'r';
+  return `<div><div class="pj-card ${i === 1 ? 'age-box-middle' : 'age-box-outer'}"><h5>${a}</h5><p class="pj-k"><i></i>CONTEXT</p><div>${T(o.ctx,'Add context')}</div><p class="pj-k"><i></i>MOTIVATIONS TO BE INDEPENDENT</p><div>${T(o.mot,'Add motivations')}</div>${o.barrier ? art(side === 'l' ? OPP_ART.arrowL : OPP_ART.arrowR, 'pj-arr ' + side) : ''}</div>` +
+  (o.barrier ? `<div class="pj-bar ${side}"><h5 class="pj-bt">Biggest Barrier</h5><div class="pj-box"><strong>${T(o.barrier.t,'Add title')}</strong><span>${T(o.barrier.s,'Add text')}</span></div></div>` : '') + `</div>`; }).join('');
+
+/* question marks around the HMW boxes (positions relative to each box) */
+$('#pj-h1').insertAdjacentHTML('beforeend',
+  /* question marks: same svg, placed by centre point, scale and rotation */
+const Q_BASE = {w:44, h:68};     // natural size of the exported svg
+const Q_POS = {                  // x, y = centre inside the HMW box
+  h1:[{x:44,  y:16,  s:1,   r:0},
+      {x:950, y:152, s:.67, r:23}],
+  h2:[{x:309, y:7,   s:.74, r:0},
+      {x:729, y:180, s:1,   r:-45}]
+};
+const qmark = q => art(OPP_ART.q, '',
+  `left:${q.x}px;top:${q.y}px;width:${Q_BASE.w}px;height:${Q_BASE.h}px;transform:translate(-50%,-50%) rotate(${q.r}deg) scale(${q.s})`);
+$('#pj-h1').insertAdjacentHTML('beforeend', Q_POS.h1.map(qmark).join(''));
+$('#pj-h2').insertAdjacentHTML('beforeend', Q_POS.h2.map(qmark).join(''));
 
 /* concepts */
 const pj = {ya:{c:0,s:0}, se:{c:0,s:0}}, last = {ya:Date.now(), se:Date.now()};
