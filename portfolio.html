@@ -273,24 +273,49 @@ html.proj-open .pj{display:block}
 .pj-box{background:var(--hero-bg);border-radius:12px;padding:12px 16px;min-height:75px}
 .pj-box strong{display:block;font-size:24px;font-weight:500;line-height:28px;color:var(--ul-color);margin-bottom:4px;}
 .pj-box span{display:block;font-size:18px;font-weight:400;line-height:22px;color:var(--nav-color);}
-.pj-per{display:flex;gap:24px;align-items:center;margin:28px 0 24px}
-.pj-per figure{margin:0;text-align:center;font-size:16px;font-weight:500;letter-spacing:.05em}
-.pj-bub{position:relative;width:415px;border:2px solid var(--ul-color);border-radius:44px;padding:30px 40px;font-size:18px;line-height:1.4}
-.pj-panel{position:relative;height:490px;background:var(--hero-bg);border:1.5px solid var(--ul-color);border-radius:14px}
-.pj-panel h4{position:absolute;left:24px;top:20px;margin:0;font-size:18px;font-weight:500;z-index:2}
-.pj-panel>*,.pj-in{transition:opacity .3s}.pj-panel.out>*,.pj-in.out{opacity:0}
-.pj-in{position:absolute;inset:0}
-.pj-in>.pop{animation:pjpop .45s both}
-@keyframes pjpop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
-.pj-dlg{position:absolute;left:790px;top:250px;width:190px;margin:0 !important;font-size:16px;line-height:1.35}
-.pj-dots{position:absolute;left:36px;bottom:12px;display:flex;gap:6px}
-.pj-dots i{width:8px;height:8px;border-radius:50%;background:#fff;border:1px solid var(--ul-color);cursor:pointer}.pj-dots i.on{background:var(--ul-color)}
-.pj-aud{position:absolute;left:790px;bottom:22px;width:190px;display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--ul-color);border-radius:30px;padding:6px 12px 6px 6px;font-size:12px}
-.pj-aud button{flex:none;width:28px;height:28px;border:0;border-radius:50%;background:var(--ul-color);color:#fff;cursor:pointer;font-size:11px}
-.pj-aud input{flex:1;min-width:0;accent-color:var(--ul-color)}
-.pj-next{display:block;margin:20px 0 0 auto;width:202px;height:40px;border:0;border-radius:10px;background:var(--tab-bg);font:inherit;font-size:18px;cursor:pointer;transition:transform .2s}
-.pj-next:hover{transform:translateX(4px)}
 .pj-ref{border:1.5px solid var(--ul-color);border-radius:12px;padding:22px 30px;font-size:16px;line-height:1.5;margin-bottom:22px}.pj-ref p{margin:0}
+/* ===== CONCEPTS PANEL (young adults / seniors) ===== */
+.cx{position:relative;width:997px;height:864px;margin-top:40px;background:var(--hero-bg);border-radius:8px;overflow:hidden}
+.cx>*{position:absolute;margin:0}
+.pj .cx p{margin:0;line-height:1.2}
+
+/* progressive reveal: hidden by default, .on shows */
+.cx .rv{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease}
+.cx .rv.on{opacity:1;transform:none}
+
+/* placeholder box (shown until you add a link) */
+.cx-ph{display:grid;place-items:center;text-align:center;border:2px dashed #4a76e8;background:rgba(255,255,255,.45);color:#4a76e8;font:12px/1.2 ui-monospace,Menlo,monospace;border-radius:12px}
+
+/* persona */
+.cx-per{left:32px;top:32px;width:156px;text-align:center}
+.cx-per img,.cx-per .cx-ph{display:block;width:156px;height:218px;object-fit:contain}
+.cx-per figcaption{margin-top:6px;font-size:18px;font-weight:500;line-height:1.2;color:#000}
+
+/* dialog: svg stretches behind the text; box grows if the text needs 3 lines */
+.cx-dlg{left:217px;top:81px;width:719px;min-height:129px;display:flex;align-items:center;padding:24px 50px 28px 49px;font-size:22px;font-weight:400;color:#000}
+.cx-dsvg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.cx-dlg.plain{border:2px solid var(--ul-color);border-radius:44px;background:rgba(255,255,255,.6)}  /* fallback until the svg is linked */
+.cx-dtxt{position:relative;z-index:1;transition:opacity .3s}
+.cx-dtxt.off{opacity:0}
+
+/* next button */
+.cx-next{right:32px;top:27px;width:100px;height:40px;border:0;border-radius:8px;background:var(--ul-color);color:#fff;
+  font:inherit;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.cx-next svg{transition:transform .2s}
+.cx-next:hover svg{transform:translateX(3px)}
+.cx.busy .cx-next{pointer-events:none}
+
+/* concept title row */
+.cx-lab{left:37px;top:324px;font-size:22px;font-weight:500;color:var(--ul-color);white-space:nowrap}
+.cx-q{left:226px;top:324px;width:560px;text-align:center;font-size:22px;font-weight:500;color:var(--ul-color)}
+
+/* video stage */
+.cx-stage{left:29px;top:407px;width:940px;height:430px;overflow:hidden}
+.cx-stage>*{position:absolute;inset:0;width:100%;height:100%}
+.cx-stage video{display:block;object-fit:cover}
+.cx-stage .cx-ph{border-radius:0}
+
+@media (prefers-reduced-motion:reduce){.cx .rv,.cx-dtxt{transition:none}}
 </style>
 </head>
 <body>
@@ -369,11 +394,10 @@ html.proj-open .pj{display:block}
 <div class="pj-hmw2" id="pj-h1" style="margin-top:80px"><p>How might we design a banking system that helps <mark>young adults</mark> confidently progress from routine transactions to more complex financial decisions, so that they can build long-term financial independence and make informed choices on their own?</p></div>
 <div class="pj-hmw2" id="pj-h2"><p>How might we design a banking system that helps <mark>seniors</mark> build confidence in navigating digital banking services, so that they can gradually understand, manage and carry out financial tasks independently?</p></div></section>
 <section id="p-con" class="pj-sec"><h3 class="pj-l">CONCEPTS</h3>
-<p>Based on our opportunity statements, we developed feature concepts that could integrate into HDFC’s existing digital banking ecosystem. Each concept responds to specific insights from the two age groups, while considering the current capabilities of digital banking, emerging developments and possibilities for the future.</p></section>
+<p style="font-weight:500;font-size:24px">Based on our opportunity statements, we developed feature concepts that could integrate into HDFC’s existing digital banking ecosystem. Each concept responds to specific insights from the two age groups, while considering the current capabilities of digital banking, emerging developments and possibilities for the future.</p></section>
 
 <section id="p-ya" style="margin-top:48px"><h3 class="pj-l">01 YOUNG ADULTS</h3>
-<div class="pj-per"><figure><div class="pj-s" data-slot="ya" data-ph="Persona illustration · 245×343" style="width:245px;height:343px"></div>ROHAN, 23</figure><div class="pj-bub">I frequently use digital financial tools for daily tasks, but lack confidence when making complex financial decisions independently.</div></div>
-<div class="pj-panel" id="pj-ya"></div><button class="pj-next" data-next="ya">Next Concept →</button>
+<div class="cx" id="cx-ya" data-g="ya"></div>
 <h3 style="font-size:22px;font-weight:500;margin-top:36px">How does this impact Rohan?</h3>
 <div class="pj-imp">
 <div><img class="pj-num" src="num1.svg" alt="1"><p>Increased financial awareness, both through knowledge of terms and upcoming services that could be relevant to him.</p></div>
@@ -382,8 +406,7 @@ html.proj-open .pj{display:block}
 <div><img class="pj-num" src="num4.svg" alt="4"><p>He can now approach larger decisions like travel, investments, higher studies with more clarity.</p></div>
 </div></section>
 <section id="p-se" style="margin-top:72px"><h3 class="pj-l">02 SENIORS</h3>
-<div class="pj-per"><figure><div class="pj-s" data-slot="se" data-ph="Persona illustration · 245×343" style="width:245px;height:343px"></div>MEENA, 64</figure><div class="pj-bub">I often fully delegate financial tasks to trusted people, with the absence of guided and gradual learning pathways limiting my transition toward independence.</div></div>
-<div class="pj-panel" id="pj-se"></div><button class="pj-next" data-next="se">Next Concept →</button>
+<div class="cx" id="cx-se" data-g="se"></div>
 <h3 style="font-size:22px;font-weight:500;margin-top:36px">How does this impact Meena?</h3>
 <div class="pj-imp">
 <div><img class="pj-num" src="num1.svg" alt="1"><p>Understanding of digital finance and therefore usage increases. Daily tasks become comfortable with practice</p></div>
@@ -721,47 +744,117 @@ const qmark = q => art(OPP_ART.q, '',
 $('#pj-h1').insertAdjacentHTML('beforeend', Q_POS.h1.map(qmark).join(''));
 $('#pj-h2').insertAdjacentHTML('beforeend', Q_POS.h2.map(qmark).join(''));
 
-/* concepts */
-const pj = {ya:{c:0,s:0}, se:{c:0,s:0}}, last = {ya:Date.now(), se:Date.now()};
-const cur = g => HDFC.concepts[g][pj[g].c];
-const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
-const stopAud = () => document.querySelectorAll('#p-hdfc audio').forEach(a => a.pause());
-const box = (src,x,y,w,h,ph) => `<div class="pj-s pop${src?' f':''}" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px">${src?`<img src="${src}" alt="">`:ph}</div>`;
+/* ===== CONCEPTS: young adults + seniors ===== */
+/* CONFIG — links and text. "" = placeholder shown.
+   video = your 940×430 clip, poster = optional still, loop = true/false */
+const CX = {
+  ya: {
+    persona: {src:"Rohan.png", name:"ROHAN, 23"},      // persona illustration (~156×218)
+    dialogSvg: "speech1.svg",                             // speech-bubble svg link
+    concepts: [
+      {label:"CONCEPT 1", q:"What if financial planning felt as simple and imaginative as making a vision board rather than a chore?",
+       dialog:"I frequently use digital financial tools for daily tasks, but lack confidence when taking complex financial decisions independently.",
+       video:"", poster:"", loop:true},
+      {label:"CONCEPT 2", q:"Add concept question", dialog:"Add dialog text", video:"", poster:"", loop:true},
+      {label:"CONCEPT 3", q:"Add concept question", dialog:"Add dialog text", video:"", poster:"", loop:true}
+    ]
+  },
+  se: {
+    persona: {src:"", name:"MEENA, 64"},
+    dialogSvg: "",
+    concepts: [
+      {label:"CONCEPT 1", q:"What if support systems were designed to gradually build confidence instead of becoming long-term crutches?",
+       dialog:"I often fully delegate financial tasks to trusted people, with the absence of guided and gradual learning pathways limiting my transition toward independence.",
+       video:"", poster:"", loop:true},
+      {label:"CONCEPT 2", q:"Add concept question", dialog:"Add dialog text", video:"", poster:"", loop:true}
+    ]
+  }
+};
 
-function render(g){
-  const C = cur(g), S = C.screens[pj[g].s], P = $('#pj-'+g);
-  P.innerHTML = `<h4>${C.title}</h4><div class="pj-in">${box(S.phone,36,79,187,386,'Phone UI<br>gif / image')}` +
-    S.els.map((e,i) => box(e.src,e.x,e.y,e.w,e.h,'Image '+(i+1))).join('') +
-    `<p class="pj-dlg pop">${C.text}</p>` +
-    (C.audio !== undefined ? `<div class="pj-aud pop"><button aria-label="Play">▶</button><input type="range" min="0" max="100" value="0"><span>0:00</span><audio src="${C.audio}" preload="none"></audio></div>` : '') +
-    (C.screens.length > 1 ? `<div class="pj-dots">${C.screens.map((_,i) => `<i data-d="${i}" class="${i===pj[g].s?'on':''}"></i>`).join('')}</div>` : '') + `</div>`;
-  P.querySelectorAll('.pj-in>.pop').forEach((e,i) => e.style.animationDelay = i*70 + 'ms');
-  const w = P.querySelector('.pj-aud');
-  if (w) { const a = w.querySelector('audio'), b = w.querySelector('button'), r = w.querySelector('input'), t = w.querySelector('span');
-    b.onclick = () => a.paused ? a.play() : a.pause();
-    a.onplay = () => b.textContent = '❚❚';
-    a.onpause = a.onended = () => b.textContent = '▶';
-    a.ontimeupdate = () => { r.value = a.duration ? a.currentTime/a.duration*100 : 0; t.textContent = fmt(a.currentTime); };
-    r.oninput = () => { if (a.duration) a.currentTime = r.value/100*a.duration; }; }
-}
-function swap(g, full){            // fade whole panel (new concept) or just the stage (next screen)
-  const P = $('#pj-'+g), t = full ? P : P.querySelector('.pj-in');
-  stopAud(); t.classList.add('out');
-  setTimeout(() => { render(g); t.classList.remove('out'); }, 320);
-}
+const CX_ARROW = '<svg width="16" height="13" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13M9 1.5l5 5-5 5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const cxReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cxWait = ms => new Promise(r => setTimeout(r, cxReduce ? 0 : ms));
+const cxOn  = (...e) => e.forEach(x => x.classList.add('on'));
+const cxOff = (...e) => e.forEach(x => x.classList.remove('on'));
+const stopAud = () => document.querySelectorAll('#p-hdfc video').forEach(v => v.pause());   // used by the router
+const CXS = {};
+
+/* build both panels */
 ['ya','se'].forEach(g => {
-  render(g);
-  $('#pj-'+g).addEventListener('click', e => { const d = e.target.dataset.d; if (d === undefined) return; pj[g].s = +d; last[g] = Date.now(); swap(g,false); });
+  const D = CX[g], el = $('#cx-' + g), q = s => el.querySelector(s);
+  el.innerHTML = `
+    <figure class="cx-per rv">${D.persona.src ? `<img src="${D.persona.src}" alt="${D.persona.name}">` : `<div class="cx-ph">Persona<br>156×218</div>`}<figcaption>${D.persona.name}</figcaption></figure>
+    <div class="cx-dlg rv${D.dialogSvg ? '' : ' plain'}">${D.dialogSvg ? `<img class="cx-dsvg" src="${D.dialogSvg}" alt="">` : ''}<p class="cx-dtxt" aria-live="polite"></p></div>
+    <button class="cx-next rv" aria-label="Next concept">Next ${CX_ARROW}</button>
+    <div class="cx-lab rv"></div>
+    <p class="cx-q rv"></p>
+    <div class="cx-stage rv"><video muted playsinline preload="auto"></video><div class="cx-ph">Concept video<br>940×430</div></div>`;
+  CXS[g] = {el, c:0, busy:false, started:false, shown:false,
+    per:q('.cx-per'), dlg:q('.cx-dlg'), dtxt:q('.cx-dtxt'), next:q('.cx-next'),
+    lab:q('.cx-lab'), q:q('.cx-q'), stage:q('.cx-stage'), v:q('video'), ph:q('.cx-stage .cx-ph')};
+  CXS[g].dtxt.textContent = D.concepts[0].dialog;
+  CXS[g].next.addEventListener('click', () => cxNext(g));
 });
-document.querySelectorAll('[data-next]').forEach(b => b.onclick = () => {
-  const g = b.dataset.next; pj[g].c = (pj[g].c + 1) % HDFC.concepts[g].length; pj[g].s = 0; last[g] = Date.now(); swap(g,true);
-});
-setInterval(() => ['ya','se'].forEach(g => {                 // every 5s, move to the concept's next screen
-  if (!root.classList.contains('proj-open') || Date.now() - last[g] < 5000) return;
-  const n = cur(g).screens.length; if (n < 2) return;
-  pj[g].s = (pj[g].s + 1) % n; last[g] = Date.now(); swap(g,false);
-}), 500);
 
+const cxBusy = (S, b) => { S.busy = b; S.el.classList.toggle('busy', b); };
+
+/* load the clip while the title text is revealing, so it is ready when the stage fades in */
+function cxLoad(S, c){
+  S.v.style.display  = c.video ? '' : 'none';
+  S.ph.style.display = c.video ? 'none' : '';
+  if (!c.video) return Promise.resolve();
+  return new Promise(res => {
+    const v = S.v; v.loop = c.loop !== false; v.poster = c.poster || '';
+    if (v.getAttribute('src') !== c.video) { v.src = c.video; v.load(); }
+    if (v.readyState >= 3) return res();
+    v.addEventListener('canplay', () => res(), {once:true});
+    setTimeout(res, 3000);                       // don't wait forever on a slow connection
+  });
+}
+
+/* concept title -> then video */
+async function cxConcept(g){
+  const S = CXS[g], c = CX[g].concepts[S.c], ready = cxLoad(S, c);
+  S.lab.textContent = c.label; S.q.textContent = c.q;
+  cxOn(S.lab);  await cxWait(250);
+  cxOn(S.q);    await cxWait(550);
+  await ready;
+  cxOn(S.stage); S.shown = true;
+  if (c.video) { try { S.v.currentTime = 0; } catch(e) {} S.v.play().catch(() => {}); }
+}
+
+/* first time the panel scrolls into view: persona -> dialog -> concept 1 -> video */
+async function cxIntro(g){
+  const S = CXS[g]; S.started = true; cxBusy(S, true);
+  cxOn(S.per);            await cxWait(600);
+  cxOn(S.dlg, S.next);    await cxWait(650);
+  await cxConcept(g);
+  cxBusy(S, false);
+}
+
+/* Next: clear everything under the dialog -> new dialog text -> concept title -> video */
+async function cxNext(g){
+  const S = CXS[g]; if (S.busy || !S.started) return;
+  cxBusy(S, true);
+  cxOff(S.lab, S.q, S.stage); S.shown = false;
+  await cxWait(500); S.v.pause();
+  S.c = (S.c + 1) % CX[g].concepts.length;               // loops back to concept 1 after the last
+  S.dtxt.classList.add('off');    await cxWait(300);
+  S.dtxt.textContent = CX[g].concepts[S.c].dialog;
+  S.dtxt.classList.remove('off'); await cxWait(600);
+  await cxConcept(g);
+  cxBusy(S, false);
+}
+
+/* start on scroll-in; pause the clip when the panel leaves the screen (or the project page closes) */
+const cxIO = new IntersectionObserver(es => es.forEach(e => {
+  const g = e.target.dataset.g, S = CXS[g];
+  if (e.intersectionRatio >= .25) {
+    if (!S.started) cxIntro(g);
+    else if (S.shown && S.v.paused && S.v.style.display !== 'none') S.v.play().catch(() => {});
+  } else if (e.intersectionRatio < .05) S.v.pause();
+}), {threshold:[0, .05, .25]});
+Object.values(CXS).forEach(S => cxIO.observe(S.el));
 /* side nav */
 const sn = [...document.querySelectorAll('.pj-side button')];
 sn.forEach(b => b.onclick = () => scrollTo({top: $('#'+b.dataset.go).getBoundingClientRect().top + scrollY - 175*num('--k'), behavior:'smooth'}));
