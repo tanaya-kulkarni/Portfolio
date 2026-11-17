@@ -676,9 +676,6 @@ if (location.search.includes('drag')) {
 }
 /* ===== PROJECT PAGE: HDFC ===== */
 /* CONFIG — add links/text here. "" = placeholder shown. */
-const E = (x,y,w,h,src="") => ({x,y,w,h,src});          // image box inside the blue panel: E(x, y, width, height, "link")
-const L1 = () => [E(581,100,120,148),E(583,260,118,178),E(715,40,123,178),E(448,260,120,150),E(445,82,125,166),E(313,274,120,178)];
-const L2 = () => [E(275,170,250,152),E(550,107,204,383)];
 const OPP_ART = {
   arrowL: "arrowleft.svg",   // curvy arrow under the 21-30 card
   arrowR: "arrowright.svg",   // curvy arrow under the 60+ card
@@ -697,19 +694,6 @@ const HDFC = {
      mot:"To reduce reliance on others for routine tasks. Have control over their savings and feel secure when carrying out transactions alone",
      barrier:{t:"Digital confidence", s:"Having interacted with financial institutions over the years, they understand the system, but struggle to navigate digital interfaces and virtual finances."}}
   ], // 21-30, 31-60, 60+  (no barrier on 31-60)
-  concepts:{
-    ya:[
-      {title:"CONCEPT 1 - Financial Vision Board", text:"While onboarding to the bank’s platform, users are presented with a short quiz",
-       screens:[{phone:"",els:L1()},{phone:"",els:L1()},{phone:"",els:L1()}]},          // phone = gif/image link
-      {title:"CONCEPT 2 - Add name", text:"Add dialog text", screens:[{phone:"",els:L1()},{phone:"",els:L1()}]},
-      {title:"CONCEPT 3 - Add name", text:"Add dialog text", screens:[{phone:"",els:L1()}]}
-    ],
-    se:[
-      {title:"CONCEPT 1 - Add a helper", text:"While onboarding the user can add a trusted family member/helper that can monitor and guide their steps on the platform",
-       screens:[{phone:"",els:L2()},{phone:"",els:L2()}]},
-      {title:"CONCEPT 2 - Add name", text:"Add dialog text", audio:"", screens:[{phone:"",els:L2()}]}   // audio = mp3 link, shows play button + slider
-    ]
-  }
 };
 
 const T = (v,p) => v ? v : `<span class="pj-t">${p}</span>`;
