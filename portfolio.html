@@ -734,9 +734,7 @@ const qmark = q => art(OPP_ART.q, '',
 $('#pj-h1').insertAdjacentHTML('beforeend', Q_POS.h1.map(qmark).join(''));
 $('#pj-h2').insertAdjacentHTML('beforeend', Q_POS.h2.map(qmark).join(''));
 
-/* ===== CONCEPTS: young adults + seniors ===== */
-/* CONFIG — links and text. "" = placeholder shown.
-   video = your 940×430 clip, poster = optional still, loop = true/false */
+
 const CX = {
   ya: {
     persona: {src:"Rohan.png", name:"ROHAN, 23"},      // persona illustration (~156×218)
@@ -746,7 +744,7 @@ const CX = {
        dialog:"I frequently use digital financial tools for daily tasks, but lack confidence when taking complex financial decisions independently.",
        video:"concept1YA.mp4", poster:"", loop:true},
       {label:"CONCEPT 2", q:"What if banking recognized life moments as opportunities for learning rather than just selling products?", 
-       dialog:"I tend to explore banking out of need rather than curiousity. I seek financial guidance when facing immediate needs such as education or travel plans.", 
+       dialog:"I tend to explore banking out of need rather than curiosity. I seek financial guidance when facing immediate needs such as education or travel plans.", 
        video:"", poster:"", loop:true},
       {label:"CONCEPT 3", q:"Add concept question", dialog:"Add dialog text", video:"", poster:"", loop:true}
     ]
@@ -788,7 +786,6 @@ const CXS = {};
   CXS[g].dtxt.textContent = D.concepts[0].dialog;
   CXS[g].next.addEventListener('click', () => cxGo(g, 1));    // Next
   CXS[g].back.addEventListener('click', () => cxGo(g, -1));   // Back
-});
 });
 
 const cxBusy = (S, b) => { S.busy = b; S.el.classList.toggle('busy', b); };
