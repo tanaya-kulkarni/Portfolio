@@ -299,11 +299,17 @@ html.proj-open .pj{display:block}
 .cx-dtxt.off{opacity:0}
 
 /* next button */
-.cx-next{right:32px;bottom:24px;width:100px;height:40px;border:0;border-radius:8px;background:var(--ul-color);color:#fff;
+/* next + back buttons */
+.cx-next,.cx-back{bottom:24px;width:100px;height:40px;border:0;border-radius:8px;background:var(--ul-color);color:#fff;
   font:inherit;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
-.cx-next svg{transition:transform .2s}
+.cx-next{right:32px}
+.cx-back{left:32px}
+.cx-next svg,.cx-back svg{transition:transform .2s}
+.cx-back svg{transform:scaleX(-1)}                    /* arrow flipped */
 .cx-next:hover svg{transform:translateX(3px)}
-.cx.busy .cx-next{pointer-events:none}
+.cx-back:hover svg{transform:scaleX(-1) translateX(3px)}
+.cx.busy .cx-next,.cx.busy .cx-back{pointer-events:none}
+.cx .rv:not(.on){pointer-events:none}                 /* hidden elements can't be clicked */
 
 /* concept title row */
 .cx-lab{left:37px;top:324px;font-size:22px;font-weight:500;color:var(--ul-color);white-space:nowrap}
@@ -788,14 +794,17 @@ const CXS = {};
     <figure class="cx-per rv">${D.persona.src ? `<img src="${D.persona.src}" alt="${D.persona.name}">` : `<div class="cx-ph">Persona<br>156×218</div>`}<figcaption>${D.persona.name}</figcaption></figure>
     <div class="cx-dlg rv${D.dialogSvg ? '' : ' plain'}">${D.dialogSvg ? `<img class="cx-dsvg" src="${D.dialogSvg}" alt="">` : ''}<p class="cx-dtxt" aria-live="polite"></p></div>
     <button class="cx-next rv" aria-label="Next concept">Next ${CX_ARROW}</button>
+    <button class="cx-back rv" aria-label="Previous concept">${CX_ARROW} Back</button>
     <div class="cx-lab rv"></div>
     <p class="cx-q rv"></p>
     <div class="cx-stage rv"><video muted playsinline preload="auto"></video><div class="cx-ph">Concept video<br>940×430</div></div>`;
   CXS[g] = {el, c:0, busy:false, started:false, shown:false,
-    per:q('.cx-per'), dlg:q('.cx-dlg'), dtxt:q('.cx-dtxt'), next:q('.cx-next'),
+    per:q('.cx-per'), dlg:q('.cx-dlg'), dtxt:q('.cx-dtxt'), next:q('.cx-next'), back:q('.cx-back'),
     lab:q('.cx-lab'), q:q('.cx-q'), stage:q('.cx-stage'), v:q('video'), ph:q('.cx-stage .cx-ph')};
   CXS[g].dtxt.textContent = D.concepts[0].dialog;
-  CXS[g].next.addEventListener('click', () => cxNext(g));
+  CXS[g].next.addEventListener('click', () => cxGo(g, 1));    // Next
+  CXS[g].back.addEventListener('click', () => cxGo(g, -1));   // Back
+});
 });
 
 const cxBusy = (S, b) => { S.busy = b; S.el.classList.toggle('busy', b); };
@@ -834,15 +843,19 @@ async function cxIntro(g){
   cxBusy(S, false);
 }
 
-/* Next: clear everything under the dialog -> new dialog text -> concept title -> video */
-async function cxNext(g){
-  const S = CXS[g]; if (S.busy || !S.started) return;
+/* Next / Back: clear everything under the dialog -> new dialog text -> concept title -> video */
+async function cxGo(g, dir){
+  const S = CXS[g], n = CX[g].concepts.length;
+  if (S.busy || !S.started) return;
+  const to = dir > 0 ? (S.c + 1) % n : S.c - 1;          // Next loops after the last concept, Back stops at the first
+  if (to < 0) return;
   cxBusy(S, true);
   cxOff(S.lab, S.q, S.stage); S.shown = false;
   await cxWait(500); S.v.pause();
-  S.c = (S.c + 1) % CX[g].concepts.length;               // loops back to concept 1 after the last
+  S.c = to;
   S.dtxt.classList.add('off');    await cxWait(300);
   S.dtxt.textContent = CX[g].concepts[S.c].dialog;
+  S.back.classList.toggle('on', S.c > 0);                // Back fades in/out with the new dialog text
   S.dtxt.classList.remove('off'); await cxWait(600);
   await cxConcept(g);
   cxBusy(S, false);
