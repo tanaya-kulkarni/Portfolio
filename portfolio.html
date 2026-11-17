@@ -313,7 +313,7 @@ html.proj-open .pj{display:block}
 
 /* concept title row */
 .cx-lab{left:37px;top:324px;font-size:22px;font-weight:500;color:var(--ul-color);white-space:nowrap}
-.cx-q{left:226px;top:324px;width:560px;text-align:center;font-size:22px;font-weight:500;color:var(--ul-color)}
+.cx-q{left:170px;top:324px;width:700px;text-align:center;font-size:22px;font-weight:500;color:var(--ul-color)}
 
 /* video stage */
 .cx-stage{left:29px;top:407px;width:940px;height:430px;overflow:hidden}
@@ -850,6 +850,7 @@ async function cxGo(g, dir){
   const to = dir > 0 ? (S.c + 1) % n : S.c - 1;          // Next loops after the last concept, Back stops at the first
   if (to < 0) return;
   cxBusy(S, true);
+  scrollTo({top: S.dlg.getBoundingClientRect().top + scrollY - 185*num('--k'), behavior: cxReduce ? 'auto' : 'smooth'});   // ← new
   cxOff(S.lab, S.q, S.stage); S.shown = false;
   await cxWait(500); S.v.pause();
   S.c = to;
