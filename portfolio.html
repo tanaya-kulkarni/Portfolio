@@ -759,7 +759,7 @@ const CX = {
        video:"concept1S.mp4", poster:"", loop:true},
       {q:"What if we identified moments of hesitation as opportunities for reassurance and support, rather than user failure?", 
        dialog:"I am often willing to use digital banking, but moments of uncertainty during transactions create anxiety due to the lack of visible reassurance and recovery systems.", 
-       video:"concept2S.mp4", poster:"", loop:true}
+       video:"concept2S.mp4", poster:"", loop:true, sound:true}
     ]
   }
 };
@@ -792,11 +792,15 @@ const CXS = {};
 });
 
 const cxBusy = (S, b) => { S.busy = b; S.el.classList.toggle('busy', b); };
-
+/* try with sound; if the browser blocks it, play muted and let the viewer turn sound on */
+function cxPlay(S){
+  S.v.play().catch(() => { S.v.muted = true; S.v.play().catch(() => {}); });
+};
 /* load the clip while the title text is revealing, so it is ready when the stage fades in */
 function cxLoad(S, c){
   S.v.style.display  = c.video ? '' : 'none';
   S.ph.style.display = c.video ? 'none' : '';
+  S.v.muted = !c.sound;
   if (!c.video) return Promise.resolve();
   return new Promise(res => {
     const v = S.v; v.loop = c.loop !== false; v.poster = c.poster || '';
@@ -815,7 +819,7 @@ async function cxConcept(g){
   cxOn(S.q);    await cxWait(550);
   await ready;
   cxOn(S.stage); S.shown = true;
-  if (c.video) { try { S.v.currentTime = 0; } catch(e) {} S.v.play().catch(() => {}); }
+  if (c.video) { try { S.v.currentTime = 0; } catch(e) {} cxPlay(S); }
 }
 
 /* first time the panel scrolls into view: persona -> dialog -> concept 1 -> video */
@@ -836,6 +840,7 @@ async function cxGo(g, dir){
   cxBusy(S, true);
   scrollTo({top: S.dlg.getBoundingClientRect().top + scrollY - 185*num('--k'), behavior: cxReduce ? 'auto' : 'smooth'});   // ← new
   cxOff(S.lab, S.q, S.stage); S.shown = false;
+  if (CX[g].concepts[S.c].sound) S.v.pause();
   await cxWait(500); S.v.pause();
   S.c = to;
   S.dtxt.classList.add('off');    await cxWait(300);
